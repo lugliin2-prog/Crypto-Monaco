@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#080b09">
+<title>CRYPTO MONACO</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+:root{--bg:#080b09;--card:#101712;--line:#26382c;--green:#35d995;--muted:#91a095;--white:#edf4ee}
+*{box-sizing:border-box}
+body{margin:0;padding:22px 16px 100px;background:var(--bg);color:var(--white);font:15px -apple-system,BlinkMacSystemFont,sans-serif}
+header{display:flex;align-items:center;gap:12px;margin-bottom:30px}
+.logo{width:44px;height:44px;display:grid;place-items:center;border:1px solid #31553d;border-radius:13px;background:#142019;color:var(--green);font-size:23px;font-weight:800}
+h1{font-size:15px;letter-spacing:1.5px;margin:0 0 5px}
+h2{font-size:25px;line-height:1.2;margin:0 0 9px}
+h3{font-size:17px;margin:0}
+p{color:var(--muted);line-height:1.5;margin:0}
+.muted{color:var(--muted);font-size:12px}
+.online{margin-left:auto;color:var(--green);font-size:10px;letter-spacing:1px}
+section{margin-bottom:25px}
+.label{font-size:10px;letter-spacing:1.7px;color:var(--muted);margin-bottom:13px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;min-width:0}
+.price{font-size:23px;font-weight:750;margin:13px 0 6px;overflow-wrap:anywhere}
+.green{color:var(--green)}
+button{font:inherit;cursor:pointer}
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.menu button,.action{background:var(--card);color:var(--white);border:1px solid var(--line);border-radius:13px;padding:15px 12px;text-align:left;font-size:13px;font-weight:650}
+.menu button{min-height:72px}
+.menu span{display:block;color:var(--muted);font-size:11px;font-weight:400;margin-top:6px}
+.primary{width:100%;background:#153b27;color:#8cf0b9;border:1px solid #2c7048;border-radius:13px;padding:15px;font-weight:700;text-align:center;margin-top:13px}
+.page{display:none}.page.active{display:block}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:13px}
+.row:last-child{border-bottom:0}
+.bottom{position:fixed;z-index:5;bottom:0;left:0;right:0;padding:9px 7px calc(9px + env(safe-area-inset-bottom));background:#080b09f5;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.bottom button{border:0;background:transparent;color:var(--muted);border-radius:10px;padding:10px 2px;font-size:10px;line-height:1.8}
+.bottom button.active{color:var(--green);background:#14251a}
+.note{font-size:11px;line-height:1.5;color:var(--muted);margin-top:13px}
+.plan{margin-bottom:13px;padding:18px}
+.plan.featured{border-color:#398958;background:linear-gradient(150deg,#14251a,#0d130f)}
+.plan-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.badge{display:inline-block;color:#8cf0b9;background:#183824;border:1px solid #2a6040;border-radius:7px;padding:5px 7px;font-size:9px;letter-spacing:.7px}
+.plan-price{font-size:28px;font-weight:750;margin:15px 0 3px}
+.plan-price small{font-size:12px;font-weight:400;color:var(--muted)}
+ul{list-style:none;padding:0;margin:17px 0}
+li{font-size:13px;line-height:1.45;margin:12px 0;padding-left:22px;position:relative}
+li:before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800}
+.why{background:#0b100c;border:1px solid #203126;border-radius:11px;padding:12px;font-size:12px;line-height:1.55;color:#b6c5ba}
+.buy{width:100%;margin-top:13px;padding:14px;background:#193b28;color:#a3f5c6;border:1px solid #2b6843;border-radius:11px;font-size:13px;font-weight:700;text-align:center}
+.buy.secondary{background:#111813;color:var(--white);border-color:var(--line)}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">M</div>
+<div><h1>CRYPTO MONACO</h1><div class="muted">КРИПТОАНАЛИТИКА</div></div>
+<div class="online">● ONLINE</div>
+</header>
+
+<main>
+<div class="page active" id="home">
+<section>
+<div class="label">АНАЛИТИЧЕСКАЯ ПЛАТФОРМА</div>
+<h2>Рынок под контролем.</h2>
+<p>Ethereum и Solana. Данные, сценарии и рыночный контекст в одном месте.</p>
+</section>
+<section>
+<div class="label">РЫНОК · USDT</div>
+<div class="grid">
+<div class="card"><div class="muted">ETHEREUM</div><div class="price" id="eth">Загрузка…</div><div id="ethChange" class="green">ETH / USDT</div><div class="muted" style="margin-top:12px">ETH</div></div>
+<div class="card"><div class="muted">SOLANA</div><div class="price" id="sol">Загрузка…</div><div id="solChange" class="green">SOL / USDT</div><div class="muted" style="margin-top:12px">SOL</div></div>
+</div>
+<div class="note" id="updated">Загружаем публичные котировки…</div>
+</section>
+<section>
+<div class="label">РАЗДЕЛЫ</div>
+<div class="menu">
+<button onclick="openAsset('ETH')">◆ Анализ ETH<span>Ethereum →</span></button>
+<button onclick="openAsset('SOL')">◆ Анализ SOL<span>Solana →</span></button>
+<button onclick="showPage('market')">↗ Обзор рынка<span>Сравнение активов</span></button>
+<button onclick="showPage('history')">◷ История<span>Журнал сигналов</span></button>
+</div>
+<button class="primary" onclick="showPage('plans')">ВЫБРАТЬ ПОДПИСКУ →</button>
+</section>
+</div>
+
+<div class="page" id="analysis">
+<section><div class="label">АНАЛИЗ АКТИВА</div><h2 id="assetName">Ethereum</h2><p id="assetPair">ETH / USDT</p></section>
+<div class="card">
+<div class="muted">ТЕКУЩАЯ ЦЕНА</div>
+<div class="price" id="assetPrice">—</div>
+<div id="assetChange" class="green">—</div>
+<div class="row"><span class="muted">Направление</span><b>Не определено</b></div>
+<div class="row"><span class="muted">Точка входа</span><b>Не рассчитана</b></div>
+<div class="row"><span class="muted">Стоп-лосс</span><b>Не рассчитан</b></div>
+<div class="row"><span class="muted">Цели</span><b>Не рассчитаны</b></div>
+</div>
+<p class="note">Котировка — рыночные данные, а не торговый сигнал. Аналитический алгоритм ещё предстоит подключить. Не является индивидуальной инвестиционной рекомендацией.</p>
+<button class="primary" onclick="showPage('plans')">ОТКРЫТЬ ДОСТУП К АНАЛИТИКЕ</button>
+</div>
+
+<div class="page" id="market">
+<section><div class="label">ОБЗОР РЫНКА</div><h2>ETH & SOL</h2><p>Сравнение суточной динамики.</p></section>
+<div class="card">
+<div class="row"><span>Ethereum</span><b id="mEth">—</b></div>
+<div class="row"><span>Изменение ETH за 24 ч.</span><b id="mEthC">—</b></div>
+<div class="row"><span>Solana</span><b id="mSol">—</b></div>
+<div class="row"><span>Изменение SOL за 24 ч.</span><b id="mSolC">—</b></div>
+</div>
+<p class="note">Динамика за сутки не гарантирует дальнейшее направление цены.</p>
+</div>
+
+<div class="page" id="history">
+<section><div class="label">ЖУРНАЛ</div><h2>История сигналов</h2><p>Отслеживание опубликованных сценариев и их результатов.</p></section>
+<div class="card"><h3>История пока пуста</h3><p style="margin-top:8px">После подключения аналитического движка здесь будут отображаться сигналы и статистика их результатов.</p></div>
+</div>
+
+<div class="page" id="plans">
+<section><div class="label">ДОСТУП И ВОЗМОЖНОСТИ</div><h2>Выбери свой уровень.</h2><p>Три тарифа под разные задачи. Без обещаний гарантированной прибыли.</p></section>
+
+<div class="card plan">
+<div class="plan-head"><div><h3>PRO</h3><p style="margin-top:5px">Базовая аналитика</p></div><span class="badge">СТАРТОВЫЙ</span></div>
+<div class="plan-price">€15 <small>/ месяц</small></div>
+<p>Для самостоятельного изучения рынка.</p>
+<ul>
+<li>Отдельный анализ ETH и SOL</li>
+<li>Сценарии LONG и SHORT при наличии условий</li>
+<li>Обоснование направления рынка</li>
+<li>Ключевые уровни и рыночный контекст</li>
+<li>История опубликованных сигналов</li>
+</ul>
+<div class="why"><b class="green">Почему PRO?</b><br>Экономит время на сбор информации: ключевые данные по двум активам собраны в одном интерфейсе.</div>
+<button class="buy" onclick="choosePlan('PRO',15)">ВЫБРАТЬ PRO · €15</button>
+</div>
+
+<div class="card plan featured">
+<div class="plan-head"><div><h3>ELITE</h3><p style="margin-top:5px">Расширенная аналитика</p></div><span class="badge">РЕКОМЕНДУЕМ</span></div>
+<div class="plan-price">€30 <small>/ месяц</small></div>
+<p>Для более системного анализа.</p>
+<ul>
+<li>Все возможности PRO</li>
+<li>Сравнение силы сценариев ETH и SOL</li>
+<li>Расширенное объяснение аргументов за и против</li>
+<li>Дополнительные таймфреймы и подтверждения</li>
+<li>Уведомления при изменении условий сценария</li>
+<li>Расширенная статистика результатов</li>
+</ul>
+<div class="why"><b class="green">Почему ELITE?</b><br>Помогает сравнивать альтернативные сценарии, понимать логику анализа и отслеживать изменения рынка, а не смотреть только на направление цены.</div>
+<button class="buy" onclick="choosePlan('ELITE',30)">ВЫБРАТЬ ELITE · €30</button>
+</div>
+
+<div class="card plan">
+<div class="plan-head"><div><h3>VIP</h3><p style="margin-top:5px">Максимальная глубина</p></div><span class="badge">ПОЛНЫЙ ДОСТУП</span></div>
+<div class="plan-price">€50 <small>/ месяц</small></div>
+<p>Для пользователей, которым нужен расширенный обзор.</p>
+<ul>
+<li>Все возможности ELITE</li>
+<li>Альтернативные сценарии при смене тренда</li>
+<li>Более подробные аналитические отчёты</li>
+<li>Гибкие фильтры по активам и уведомлениям</li>
+<li>Расширенная история и оценка эффективности</li>
+<li>Приоритетный доступ к новым функциям</li>
+</ul>
+<div class="why"><b class="green">Почему VIP?</b><br>Даёт наиболее полный набор инструментов платформы в одном месте и подходит тем, кому важны детализация, гибкость и контроль аналитических данных.</div>
+<button class="buy secondary" onclick="choosePlan('VIP',50)">ВЫБРАТЬ VIP · €50</button>
+</div>
+
+<p class="note">Важно: перечисленные расширенные функции — планируемые возможности, пока не все реализованы. Оплата и автоматическая активация доступа ещё не подключены. Нажатие кнопки не спишет деньги.</p>
+</div>
+</main>
+
+<nav class="bottom">
+<button class="active" data-page="home" onclick="showPage('home')">⌂<br>Главная</button>
+<button data-page="market" onclick="showPage('market')">↗<br>Рынок</button>
+<button data-page="history" onclick="showPage('history')">◷<br>История</button>
+<button data-page="plans" onclick="showPage('plans')">◇<br>Подписка</button>
+</nav>
+
+<script>
+const tg=window.Telegram?.WebApp;
+if(tg){tg.ready();tg.expand();try{tg.setHeaderColor('#080b09');tg.setBackgroundColor('#080b09')}catch(e){}}
+function showPage(id){
+ document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));
+ document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===id));
+ window.scrollTo(0,0);
+}
+function openAsset(symbol){
+ showPage('analysis');
+ const eth=symbol==='ETH';
+ document.getElementById('assetName').textContent=eth?'Ethereum':'Solana';
+ document.getElementById('assetPair').textContent=symbol+' / USDT';
+ document.getElementById('assetPrice').textContent=document.getElementById(eth?'eth':'sol').textContent;
+ document.getElementById('assetChange').textContent=document.getElementById(eth?'ethChange':'solChange').textContent;
+}
+function choosePlan(name,price){
+ const msg='Вы выбрали тариф '+name+' за €'+price+'/месяц. Оплата пока не подключена.';
+ if(tg&&tg.showAlert)tg.showAlert(msg);else alert(msg);
+}
+async function loadMarket(){
+ try{
+  const r=await fetch('https://api.binance.com/api/v3/ticker/24hr?symbols=%5B%22ETHUSDT%22,%22SOLUSDT%22%5D');
+  if(!r.ok)throw Error('API');
+  const data=await r.json();
+  data.forEach(c=>{
+   const eth=c.symbol==='ETHUSDT',id=eth?'eth':'sol';
+   const price=Number(c.lastPrice).toLocaleString('ru-RU',{maximumFractionDigits:eth?2:3});
+   const change=Number(c.priceChangePercent);
+   const formatted=(change>0?'+':'')+change.toFixed(2)+'%';
+   document.getElementById(id).textContent='$'+price;
+   document.getElementById(id+'Change').textContent=formatted+' за 24 ч.';
+   document.getElementById(id+'Change').style.color=change>=0?'#35d995':'#ff7979';
+   document.getElementById(eth?'mEth':'mSol').textContent='$'+price;
+   document.getElementById(eth?'mEthC':'mSolC').textContent=formatted;
+   document.getElementById(eth?'mEthC':'mSolC').style.color=change>=0?'#35d995':'#ff7979';
+  });
+  document.getElementById('updated').textContent='Обновлено '+new Date().toLocaleTimeString('ru-RU')+' · Источник: Binance';
+ }catch(e){
+  document.getElementById('updated').textContent='Котировки недоступны. Проверь соединение или попробуй позже.';
+  document.getElementById('eth').textContent='Недоступно';
+  document.getElementById('sol').textContent='Недоступно';
+ }
+}
+loadMarket();
+setInterval(loadMarket,60000);
+</script>
+</body>
+</html>

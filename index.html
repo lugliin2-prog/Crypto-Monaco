@@ -1,312 +1,301 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name="theme-color" content="#050907">
-<title>CRYPTO MONACO</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#070a0b">
+<title>CRYPTO MONACO — Trading Intelligence</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 <style>
-:root{--bg:#050907;--panel:#0b120e;--line:#183d2a;--green:#29f58b;--muted:#84968b;--white:#edf7f0;--red:#ff5364}
+:root{--bg:#070a0b;--panel:#0d1214;--panel2:#11191b;--line:#202b2d;--green:#2cff9a;--green2:#12c879;--red:#ff5572;--yellow:#ffc857;--text:#edf7f2;--muted:#81918b;--radius:18px;--shadow:0 14px 40px #0005}
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at 50% 0%,#0b2417 0%,var(--bg) 48%);color:var(--white);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:0 16px 100px}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 80% -15%,#103b2c 0,transparent 38%),var(--bg);color:var(--text);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:14px;min-height:100vh}
 button{font:inherit;cursor:pointer}
-header{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:sticky;top:0;background:#050907f2;z-index:5}
-.brand{display:flex;align-items:center;gap:11px;font-size:13px;letter-spacing:3px;font-weight:800}
-.crown{font-size:29px;color:var(--green);text-shadow:0 0 18px #29f58b77}
-.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:4px;margin-top:4px}
-.connect{background:transparent;border:1px solid var(--green);color:var(--green);padding:11px 14px;border-radius:12px;font-size:11px;letter-spacing:1px}
-nav{display:flex;gap:7px;overflow-x:auto;padding:15px 0;border-bottom:1px solid #10271b;scrollbar-width:none}
-nav button{white-space:nowrap;padding:11px 14px;border:1px solid transparent;border-radius:10px;background:transparent;color:var(--muted);font-size:11px;letter-spacing:1.5px}
-nav button.active{border-color:var(--green);color:var(--green);background:#0a1b11}
-.page{display:none}.page.active{display:block}
-.hero{margin-top:20px;border:1px solid #17472c;border-radius:18px;text-align:center;padding:30px 12px;background:radial-gradient(ellipse at center,#103b23 0%,#08130c 66%);box-shadow:inset 0 0 35px #0b2818}
-.hero .crown{font-size:37px}
-.eyebrow{font-size:10px;color:var(--green);letter-spacing:3px;margin:10px 0}
-h1{font-size:25px;letter-spacing:5px;margin:14px 0 8px}
-.sub{font-size:10px;color:var(--muted);letter-spacing:3px}
-.status{display:inline-flex;align-items:center;gap:8px;margin-top:22px;border:1px solid #22583a;border-radius:30px;padding:10px 14px;font-size:10px;letter-spacing:1px;color:#b8d9c5}
-.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
-.section-title{display:flex;align-items:center;justify-content:space-between;margin:27px 2px 13px}
-.section-title h2{font-size:12px;letter-spacing:3px;margin:0}
-.section-title span{font-size:9px;color:var(--muted);letter-spacing:1px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.card{background:linear-gradient(145deg,#0d1911,#080e0a);border:1px solid var(--line);border-radius:16px;padding:15px;min-width:0}
-.coin-head{display:flex;justify-content:space-between;align-items:center;font-size:12px;letter-spacing:2px;font-weight:800}
-.coin-name{display:flex;align-items:center;gap:8px}
-.coin-icon{width:25px;height:25px;display:grid;place-items:center;background:#112b1b;border-radius:8px;color:var(--green)}
-.live{font-size:9px;color:var(--green);letter-spacing:1px}
-.price{font-size:20px;font-weight:750;margin:19px 0 6px;letter-spacing:-.5px;overflow-wrap:anywhere}
-.change{font-size:11px;color:var(--muted)}
-.up{color:var(--green)}.down{color:var(--red)}
-.spark{width:100%;height:48px;margin-top:15px;display:block}
-.mini-label{font-size:9px;color:var(--muted);letter-spacing:1.5px;margin-top:10px}
-.metric{font-size:21px;font-weight:750;margin-top:13px}
-.wide{grid-column:1/-1}
-.panel{border:1px solid var(--line);border-radius:15px;background:#0a120d;padding:17px;margin-top:12px}
-.panel h3{font-size:12px;letter-spacing:1.5px;margin:0 0 12px}
-.muted{color:var(--muted);font-size:12px;line-height:1.65}
-.big-number{font-size:27px;font-weight:800;margin:10px 0}
-.green-text{color:var(--green)}
-.progress{height:5px;border-radius:8px;background:#1b2b20;overflow:hidden;margin-top:12px}
-.progress div{height:100%;width:50%;background:var(--green);box-shadow:0 0 12px var(--green)}
-.action{width:100%;border:1px solid var(--green);background:var(--green);color:#031008;border-radius:11px;padding:14px;font-weight:800;font-size:11px;letter-spacing:1px;margin-top:14px}
-.action.secondary{background:#0a170e;color:var(--green)}
-.signal-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid #172a1d}
-.signal-row:last-child{border:0}
-.signal-tag{font-size:10px;letter-spacing:1px;border-radius:6px;padding:7px 8px;background:#112a1b;color:var(--green)}
-.signal-tag.red{color:var(--red);background:#291116}
-.signal-tag.neutral{color:#c7d2ca;background:#19221c}
-.plan{border:1px solid var(--line);border-radius:16px;padding:19px;background:linear-gradient(145deg,#0e1c12,#080d09);margin-bottom:12px}
-.plan.featured{border-color:var(--green);box-shadow:0 0 22px #29f58b12}
-.plan-name{font-size:12px;letter-spacing:3px;color:var(--green)}
-.plan-price{font-size:31px;font-weight:800;margin:14px 0}
-.plan-price small{font-size:11px;color:var(--muted);font-weight:400}
-.plan ul{padding-left:18px;color:#b5c8ba;font-size:12px;line-height:2}
-.note{font-size:10px;line-height:1.6;color:var(--muted);margin-top:18px}
-.empty{text-align:center;padding:24px 10px;color:var(--muted);font-size:12px;line-height:1.7}
-footer{position:fixed;bottom:0;left:0;right:0;z-index:6;background:#050907f5;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);padding:9px 7px calc(9px + env(safe-area-inset-bottom))}
-footer button{border:0;background:transparent;color:var(--muted);font-size:9px;letter-spacing:.5px;padding:7px 2px}
-footer button span{display:block;font-size:18px;margin-bottom:5px}
-footer button.active{color:var(--green)}
-.toast{position:fixed;bottom:90px;left:18px;right:18px;padding:14px;background:#11271a;border:1px solid var(--green);border-radius:12px;color:var(--white);font-size:12px;display:none;z-index:10}
-@media(min-width:600px){body{max-width:760px;margin:auto}.grid{grid-template-columns:repeat(2,1fr)}}
+button:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+.app{max-width:980px;margin:auto;padding:0 16px 100px}
+.topbar{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);gap:12px}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.logo{height:42px;width:42px;display:grid;place-items:center;border:1px solid #236b4b;border-radius:14px;color:var(--green);background:linear-gradient(135deg,#153a2b,#0b1511);font-size:23px;font-weight:900;box-shadow:0 0 25px #2cff9a12}
+.brand-title{font-size:16px;font-weight:900;letter-spacing:1.5px}
+.brand-sub{font-size:10px;color:var(--muted);letter-spacing:2px;margin-top:3px}
+.status{display:flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:999px;padding:8px 10px;color:var(--muted);font-size:11px;white-space:nowrap}
+.dot{height:7px;width:7px;background:var(--green);border-radius:50%;box-shadow:0 0 10px var(--green)}
+.hero{padding:26px 0 18px}
+.eyebrow{color:var(--green);font-size:10px;font-weight:800;letter-spacing:2.4px;text-transform:uppercase}
+.hero h1{font-size:clamp(27px,6vw,43px);line-height:1.08;letter-spacing:-1.5px;margin:10px 0}
+.hero h1 span{color:var(--green)}
+.hero p{color:var(--muted);line-height:1.55;margin:0;max-width:600px}
+.toolbar{display:flex;gap:8px;overflow:auto;padding:4px 0 16px;scrollbar-width:none}
+.toolbar::-webkit-scrollbar{display:none}
+.tab{white-space:nowrap;border:1px solid var(--line);background:#0b1011;color:var(--muted);padding:10px 15px;border-radius:12px;font-weight:700}
+.tab.active{color:var(--green);border-color:#246847;background:#10251b}
+.page{display:none}
+.page.active{display:block;animation:fade .22s ease}
+@keyframes fade{from{opacity:.4;transform:translateY(3px)}to{opacity:1;transform:none}}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.panel{background:linear-gradient(145deg,#111819,#0b1011);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);min-width:0}
+.panel-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:13px}
+.coin{display:flex;align-items:center;gap:10px}
+.coin-icon{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:900;background:#19251f;color:var(--green);border:1px solid #274536}
+.coin-icon.sol{color:#c9a5ff;background:#211c2b;border-color:#49355f}
+.coin-name{font-weight:800}
+.coin-pair{font-size:10px;color:var(--muted);margin-top:3px}
+.pill{font-size:10px;font-weight:800;border:1px solid var(--line);border-radius:999px;padding:6px 8px;color:var(--muted);white-space:nowrap}
+.price{font-size:clamp(23px,5vw,31px);font-weight:850;letter-spacing:-.7px;margin:14px 0 5px;overflow-wrap:anywhere}
+.change{font-size:12px;font-weight:750}
+.up{color:var(--green)}
+.down{color:var(--red)}
+.muted{color:var(--muted)}
+.chart-wrap{height:100px;margin:14px -3px 0;position:relative}
+.section-title{display:flex;align-items:end;justify-content:space-between;gap:10px;margin:24px 0 12px}
+.section-title h2{font-size:17px;margin:0;letter-spacing:-.3px}
+.section-title small{color:var(--muted);font-size:11px}
+.signal-card{position:relative;overflow:hidden}
+.signal-card:before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:var(--green)}
+.signal-card.short:before{background:var(--red)}
+.signal-card.wait:before{background:var(--yellow)}
+.signal-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.signal-state{font-size:11px;letter-spacing:1px;font-weight:900;color:var(--green)}
+.signal-card.short .signal-state{color:var(--red)}
+.signal-card.wait .signal-state{color:var(--yellow)}
+.score{font-size:10px;color:var(--muted)}
+.signal-price{font-size:24px;font-weight:850;margin:14px 0 4px}
+.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:16px}
+.metric{background:#080d0e;border:1px solid #1a2425;padding:10px;border-radius:11px;min-width:0}
+.metric span{display:block;color:var(--muted);font-size:10px;margin-bottom:6px}
+.metric b{font-size:12px;overflow-wrap:anywhere}
+.reason{font-size:11px;color:var(--muted);line-height:1.5;margin-top:12px}
+.banner{border:1px solid #1d5039;background:linear-gradient(115deg,#10251b,#0b1110 75%);border-radius:var(--radius);padding:17px;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px}
+.banner h3{font-size:15px;margin:0 0 5px}
+.banner p{font-size:11px;color:var(--muted);margin:0;line-height:1.5}
+.primary,.secondary,.danger{border:0;border-radius:12px;padding:12px 14px;font-weight:850;white-space:nowrap}
+.primary{background:var(--green);color:#04130b}
+.primary:disabled{opacity:.4;cursor:not-allowed}
+.secondary{background:#151e1f;border:1px solid #293535;color:var(--text)}
+.danger{background:#321820;border:1px solid #65303a;color:#ff9cab}
+.wide{width:100%}
+.notice{font-size:10px;color:#7d8c86;line-height:1.55;margin:14px 2px}
+.list{display:flex;flex-direction:column;gap:8px}
+.history-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:12px;background:#0a0f10;border:1px solid var(--line);border-radius:12px}
+.history-row b{font-size:12px}
+.history-row small{display:block;color:var(--muted);margin-top:5px;font-size:10px}
+.empty{text-align:center;color:var(--muted);padding:30px 12px;border:1px dashed #263230;border-radius:14px}
+.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.plan{background:linear-gradient(160deg,#111919,#0b1011);border:1px solid var(--line);border-radius:16px;padding:14px;min-width:0}
+.plan.featured{border-color:#278454;box-shadow:0 0 25px #2cff9a0d}
+.plan-name{font-weight:900;letter-spacing:1px}
+.plan-price{font-size:26px;font-weight:900;margin:13px 0 4px}
+.plan-price span{font-size:11px;color:var(--muted);font-weight:500}
+.plan ul{padding-left:16px;color:var(--muted);font-size:11px;line-height:1.8;min-height:90px}
+.plan .primary,.plan .secondary{width:100%;padding:10px 7px;font-size:11px}
+.profile-row{display:flex;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
+.profile-row:last-child{border-bottom:0}
+.profile-row span{color:var(--muted)}
+.bottom-nav{position:fixed;z-index:20;bottom:0;left:0;right:0;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:#080c0dee;backdrop-filter:blur(18px);border-top:1px solid var(--line);display:flex;justify-content:center}
+.bottom-inner{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;width:min(560px,100%)}
+.navbtn{border:0;background:transparent;color:var(--muted);padding:8px 4px;border-radius:12px;display:flex;flex-direction:column;align-items:center;gap:5px;font-size:10px;font-weight:700}
+.navbtn .navicon{font-size:19px}
+.navbtn.active{background:#10251b;color:var(--green)}
+.toast{position:fixed;z-index:50;bottom:95px;left:50%;transform:translateX(-50%);max-width:calc(100% - 30px);padding:12px 16px;background:#e9fff3;color:#06140c;border-radius:12px;font-size:12px;font-weight:750;box-shadow:var(--shadow);display:none}
+.loading{color:var(--muted);font-size:11px}
+.footer{text-align:center;color:#53625c;font-size:10px;margin:28px 0 0;line-height:1.6}
+@media(min-width:700px){.app{padding-left:24px;padding-right:24px}.grid.coins{grid-template-columns:repeat(2,minmax(0,1fr))}.analysis-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding-top:36px}.panel{padding:19px}}
+@media(max-width:420px){.app{padding-left:12px;padding-right:12px}.panel{padding:13px}.plans{grid-template-columns:1fr}.plan{display:grid;grid-template-columns:1fr auto;gap:0 12px}.plan-price{grid-column:2;grid-row:1;font-size:24px;margin:0}.plan ul{grid-column:1;min-height:0;margin:8px 0}.plan button{grid-column:1/-1}.status{font-size:10px;padding:7px}.banner{align-items:flex-start;flex-direction:column}.banner button{width:100%}}
 </style>
 </head>
 <body>
-<header>
-  <div class="brand"><span class="crown">♛</span><div>CRYPTO<small>MONACO</small></div></div>
-  <button class="connect" onclick="showToast('Подключение аккаунта появится после настройки сервера.')">ПОДКЛЮЧИТЬ</button>
+<div class="app">
+<header class="topbar">
+  <div class="brand"><div class="logo">♛</div><div><div class="brand-title">CRYPTO MONACO</div><div class="brand-sub">TRADING INTELLIGENCE</div></div></div>
+  <div class="status"><span class="dot" id="connectionDot"></span><span id="connectionText">Подключение рынка</span></div>
 </header>
-
-<nav id="topnav">
-  <button class="active" data-page="home">ГЛАВНАЯ</button>
-  <button data-page="market">РЫНОК</button>
-  <button data-page="signals">СИГНАЛЫ</button>
-  <button data-page="analytics">АНАЛИТИКА</button>
-  <button data-page="plans">ПОДПИСКИ</button>
-</nav>
-
+<section class="hero"><div class="eyebrow">Market intelligence · ETH / SOL</div><h1>Trade with a <span>clear edge.</span></h1><p>Рыночные данные, технические сценарии и дисциплинированный риск-менеджмент — в одном терминале.</p></section>
+<div class="toolbar" role="tablist" aria-label="Разделы"><button class="tab active" data-page="overview">Обзор рынка</button><button class="tab" data-page="signals">Сигналы</button><button class="tab" data-page="history">История</button><button class="tab" data-page="plans">Подписки</button><button class="tab" data-page="profile">Профиль</button></div>
 <main>
-<section class="page active" id="home">
-  <div class="hero">
-    <div class="crown">♛</div>
-    <div class="eyebrow">ЦИФРОВЫЕ АКТИВЫ · АНАЛИТИКА</div>
-    <h1>CRYPTO MONACO</h1>
-    <div class="sub">ПРОФЕССИОНАЛЬНЫЙ ОБЗОР РЫНКА</div>
-    <div class="status"><span class="dot"></span> <span id="feedStatus">ПОДКЛЮЧЕНИЕ К РЫНКУ...</span></div>
+<section class="page active" id="page-overview">
+  <div class="grid coins">
+    <article class="panel"><div class="panel-head"><div class="coin"><div class="coin-icon">Ξ</div><div><div class="coin-name">Ethereum</div><div class="coin-pair">ETH / USDT</div></div></div><span class="pill">SPOT</span></div><div class="price" id="ethPrice">Загрузка…</div><div class="change muted" id="ethChange">Получаем котировки</div><div class="chart-wrap"><canvas id="ethChart" aria-label="График ETH"></canvas></div></article>
+    <article class="panel"><div class="panel-head"><div class="coin"><div class="coin-icon sol">◎</div><div><div class="coin-name">Solana</div><div class="coin-pair">SOL / USDT</div></div></div><span class="pill">SPOT</span></div><div class="price" id="solPrice">Загрузка…</div><div class="change muted" id="solChange">Получаем котировки</div><div class="chart-wrap"><canvas id="solChart" aria-label="График SOL"></canvas></div></article>
   </div>
-
-  <div class="section-title"><h2>РЫНОЧНЫЕ ДАННЫЕ</h2><span>ETH / SOL</span></div>
-  <div class="grid">
-    <div class="card">
-      <div class="coin-head"><div class="coin-name"><span class="coin-icon">◆</span> ETH</div><span class="live">● LIVE</span></div>
-      <div class="price" id="ethPrice">Загрузка...</div>
-      <div class="change" id="ethChange">Ethereum / USDT</div>
-      <svg class="spark" viewBox="0 0 180 48" preserveAspectRatio="none"><polyline points="0,38 20,29 36,34 55,18 73,27 90,12 110,21 128,9 148,19 164,6 180,12" fill="none" stroke="#29f58b" stroke-width="2"/></svg>
-      <div class="mini-label">ИЗМЕНЕНИЕ ЗА 24 ЧАСА</div>
-    </div>
-    <div class="card">
-      <div class="coin-head"><div class="coin-name"><span class="coin-icon">≋</span> SOL</div><span class="live">● LIVE</span></div>
-      <div class="price" id="solPrice">Загрузка...</div>
-      <div class="change" id="solChange">Solana / USDT</div>
-      <svg class="spark" viewBox="0 0 180 48" preserveAspectRatio="none"><polyline points="0,37 18,30 34,35 53,19 69,26 86,14 104,25 122,11 141,18 160,7 180,13" fill="none" stroke="#29f58b" stroke-width="2"/></svg>
-      <div class="mini-label">ИЗМЕНЕНИЕ ЗА 24 ЧАСА</div>
-    </div>
-    <div class="card">
-      <div class="mini-label">ETHEREUM · ОБЪЁМ 24Ч</div>
-      <div class="metric" id="ethVol">—</div>
-      <div class="muted">Объём торгов в USDT</div>
-    </div>
-    <div class="card">
-      <div class="mini-label">SOLANA · ОБЪЁМ 24Ч</div>
-      <div class="metric" id="solVol">—</div>
-      <div class="muted">Объём торгов в USDT</div>
-    </div>
-  </div>
-
-  <div class="section-title"><h2>ОБЗОР СИСТЕМЫ</h2><span>СТАТУС</span></div>
-  <div class="panel">
-    <h3>ПУБЛИЧНЫЕ ДАННЫЕ РЫНКА</h3>
-    <div class="muted">Цены загружаются с Binance. Данные обновляются автоматически, если соединение доступно.</div>
-    <div class="progress"><div id="marketProgress"></div></div>
-    <button class="action secondary" onclick="loadMarket()">ОБНОВИТЬ ДАННЫЕ</button>
-  </div>
-  <div class="note">Информация предназначена для ознакомления. Это не индивидуальная инвестиционная рекомендация. Криптовалютный рынок связан с высоким риском.</div>
+  <div class="section-title"><h2>Сценарии рынка</h2><small id="analysisUpdated">Анализ ожидает данных</small></div>
+  <div class="grid analysis-grid" id="overviewSignals"><div class="empty">Загружаем свечи и рассчитываем сценарии…</div></div>
+  <div class="banner"><div><h3>Наиболее убедительный сценарий</h3><p id="bestScenarioText">Сравниваем ETH и SOL по текущим условиям.</p></div><button class="secondary" data-goto="signals">Все сигналы →</button></div>
+  <p class="notice">Информация предназначена для анализа, не является финансовой рекомендацией. Криптоактивы волатильны; индикаторы могут давать ложные сигналы.</p>
 </section>
-
-<section class="page" id="market">
-  <div class="section-title"><h2>РЫНОЧНЫЙ МОНИТОРИНГ</h2><span>LIVE DATA</span></div>
-  <div class="grid">
-    <div class="card wide">
-      <div class="coin-head"><span>ETH / USDT</span><span class="live">ETHEREUM</span></div>
-      <div class="price" id="ethPrice2">Загрузка...</div>
-      <div class="change" id="ethChange2">Ожидание данных</div>
-    </div>
-    <div class="card wide">
-      <div class="coin-head"><span>SOL / USDT</span><span class="live">SOLANA</span></div>
-      <div class="price" id="solPrice2">Загрузка...</div>
-      <div class="change" id="solChange2">Ожидание данных</div>
-    </div>
-  </div>
-  <div class="panel">
-    <h3>КАК ЧИТАТЬ ДАННЫЕ</h3>
-    <p class="muted">Цена показывает последнюю доступную рыночную котировку. Изменение за 24 часа отражает движение относительно цены 24 часа назад. Эти показатели сами по себе не гарантируют дальнейшее направление рынка.</p>
-    <button class="action secondary" onclick="loadMarket()">ОБНОВИТЬ КОТИРОВКИ</button>
-  </div>
-</section>
-
-<section class="page" id="signals">
-  <div class="section-title"><h2>СИГНАЛЫ И СЦЕНАРИИ</h2><span>ETH · SOL</span></div>
-  <div class="panel">
-    <h3>ETHEREUM / USDT</h3>
-    <div class="signal-row"><span class="muted">Рыночная цена</span><strong id="ethSignalPrice">—</strong></div>
-    <div class="signal-row"><span class="muted">Изменение за 24 часа</span><strong id="ethSignalChange">—</strong></div>
-    <div class="signal-row"><span class="muted">Статус анализа</span><span class="signal-tag neutral">НЕТ ПОДТВЕРЖДЁННОГО СИГНАЛА</span></div>
-  </div>
-  <div class="panel">
-    <h3>SOLANA / USDT</h3>
-    <div class="signal-row"><span class="muted">Рыночная цена</span><strong id="solSignalPrice">—</strong></div>
-    <div class="signal-row"><span class="muted">Изменение за 24 часа</span><strong id="solSignalChange">—</strong></div>
-    <div class="signal-row"><span class="muted">Статус анализа</span><span class="signal-tag neutral">НЕТ ПОДТВЕРЖДЁННОГО СИГНАЛА</span></div>
-  </div>
-  <div class="panel">
-    <h3>ВАЖНО</h3>
-    <p class="muted">Это интерфейс мониторинга, а не готовый торговый алгоритм. Реальные LONG/SHORT-сигналы, уровни входа, стоп-лосс, тейк-профит и оценка вероятности требуют отдельного аналитического сервера. Случайные сигналы не генерируются.</p>
-  </div>
-</section>
-
-<section class="page" id="analytics">
-  <div class="section-title"><h2>АНАЛИТИКА РЫНКА</h2><span>ОБЗОР</span></div>
-  <div class="panel">
-    <h3>ETHEREUM</h3>
-    <div class="big-number" id="ethAnalyticsPrice">—</div>
-    <div class="signal-row"><span class="muted">Изменение за 24 часа</span><strong id="ethAnalyticsChange">—</strong></div>
-    <div class="signal-row"><span class="muted">Объём торгов</span><strong id="ethAnalyticsVol">—</strong></div>
-  </div>
-  <div class="panel">
-    <h3>SOLANA</h3>
-    <div class="big-number" id="solAnalyticsPrice">—</div>
-    <div class="signal-row"><span class="muted">Изменение за 24 часа</span><strong id="solAnalyticsChange">—</strong></div>
-    <div class="signal-row"><span class="muted">Объём торгов</span><strong id="solAnalyticsVol">—</strong></div>
-  </div>
-  <div class="panel">
-    <h3>ИНТЕРПРЕТАЦИЯ</h3>
-    <p class="muted">Положительное изменение означает рост за последние 24 часа, отрицательное — снижение. Для торгового решения дополнительно нужны свечные данные, объём, волатильность, уровни поддержки и сопротивления и правила управления риском.</p>
-  </div>
-</section>
-
-<section class="page" id="plans">
-  <div class="section-title"><h2>УРОВНИ ДОСТУПА</h2><span>ПОДПИСКИ</span></div>
-  <div class="plan">
-    <div class="plan-name">PRO</div>
-    <div class="plan-price">€15 <small>/ месяц</small></div>
-    <div class="muted">Базовый уровень доступа</div>
-    <ul><li>Обзор ETH и SOL</li><li>Рыночные котировки</li><li>История аналитических обзоров</li></ul>
-    <button class="action secondary" onclick="showToast('Оплата пока не подключена. Подписка не оформлена.')">ВЫБРАТЬ PRO</button>
-  </div>
-  <div class="plan featured">
-    <div class="plan-name">ELITE · РЕКОМЕНДУЕМЫЙ УРОВЕНЬ</div>
-    <div class="plan-price">€30 <small>/ месяц</small></div>
-    <div class="muted">Расширенная аналитика</div>
-    <ul><li>Всё из PRO</li><li>Расширенные сценарии рынка</li><li>Сравнение ETH и SOL</li><li>Планируемые уведомления</li></ul>
-    <button class="action" onclick="showToast('Оплата пока не подключена. Подписка не оформлена.')">ВЫБРАТЬ ELITE</button>
-  </div>
-  <div class="plan">
-    <div class="plan-name">VIP</div>
-    <div class="plan-price">€50 <small>/ месяц</small></div>
-    <div class="muted">Максимальный план проекта</div>
-    <ul><li>Всё из ELITE</li><li>Планируемые персональные настройки</li><li>Приоритетные уведомления после запуска сервера</li></ul>
-    <button class="action secondary" onclick="showToast('Оплата пока не подключена. Подписка не оформлена.')">ВЫБРАТЬ VIP</button>
-  </div>
-  <div class="note">Тарифы отображаются для демонстрации интерфейса. Платёжная система, управление подписками и платный доступ пока не подключены. Не отправляйте оплату через эту страницу.</div>
-</section>
+<section class="page" id="page-signals"><div class="section-title"><h2>Аналитика сигналов</h2><small>15m · EMA / RSI / ATR</small></div><div class="grid analysis-grid" id="signalCards"><div class="empty">Анализ загружается…</div></div><div class="banner"><div><h3>Как читать сценарии</h3><p>LONG — условия роста; SHORT — условия снижения; WAIT — подтверждения недостаточно. Оценка силы — технический рейтинг, не вероятность прибыли.</p></div></div><p class="notice">Уровни рассчитываются по последней цене и среднему диапазону свечей. Реальная цена исполнения, комиссии и проскальзывание могут отличаться.</p></section>
+<section class="page" id="page-history"><div class="section-title"><h2>История сигналов</h2><button class="secondary" id="clearHistory">Очистить</button></div><div class="list" id="historyList"><div class="empty">Пока нет сохранённых сценариев.</div></div><p class="notice">История в этой версии хранится локально в текущем браузере. Она не синхронизируется между устройствами и не является проверенной статистикой доходности.</p></section>
+<section class="page" id="page-plans"><div class="section-title"><h2>Выбери свой уровень</h2><small>Демо-интерфейс подписок</small></div><div class="plans">
+<article class="plan"><div class="plan-name">PRO</div><div class="plan-price">€15<span> / мес.</span></div><ul><li>Сценарии ETH и SOL</li><li>Технические индикаторы</li><li>История в приложении</li></ul><button class="secondary" data-plan="PRO">Выбрать PRO</button></article>
+<article class="plan featured"><div class="plan-name">ELITE</div><div class="plan-price">€30<span> / мес.</span></div><ul><li>Всё из PRO</li><li>Сравнение сценариев</li><li>Расширенная аналитика</li></ul><button class="primary" data-plan="ELITE">Выбрать ELITE</button></article>
+<article class="plan"><div class="plan-name">VIP</div><div class="plan-price">€50<span> / мес.</span></div><ul><li>Всё из ELITE</li><li>Приоритетные функции</li><li>Дополнительные обзоры</li></ul><button class="secondary" data-plan="VIP">Выбрать VIP</button></article>
+</div><p class="notice">Оплата пока не подключена: выбор тарифа только демонстрационный и не списывает деньги, не активирует платный доступ. Для запуска нужны сервер, платёжный провайдер и проверка статуса подписки.</p></section>
+<section class="page" id="page-profile"><div class="section-title"><h2>Мой профиль</h2><small>Telegram Mini App</small></div><article class="panel"><div class="coin"><div class="logo">♛</div><div><div class="coin-name" id="profileName">Гость</div><div class="coin-pair" id="profileHandle">Профиль не подтверждён сервером</div></div></div><div style="height:14px"></div><div class="profile-row"><span>Тариф</span><b id="profilePlan">FREE · демо</b></div><div class="profile-row"><span>Рынок</span><b>ETH / USDT · SOL / USDT</b></div><div class="profile-row"><span>Обновление котировок</span><b>30 секунд</b></div><div class="profile-row"><span>Аналитика</span><b>Свечи 15m</b></div><div style="height:15px"></div><button class="primary wide" id="telegramButton">Открыть Telegram</button></article><p class="notice">Имя Telegram отображается только если приложение открыто внутри Telegram. Это не подтверждает платную подписку. Не вводи здесь seed-фразы, пароли или приватные ключи.</p></section>
 </main>
-
-<footer>
-  <button class="active" data-page="home"><span>⌂</span>ГЛАВНАЯ</button>
-  <button data-page="market"><span>⌁</span>РЫНОК</button>
-  <button data-page="signals"><span>⌁</span>СИГНАЛЫ</button>
-  <button data-page="plans"><span>♛</span>ДОСТУП</button>
-</footer>
-<div class="toast" id="toast"></div>
-
+<div class="footer">CRYPTO MONACO · MARKET DATA BY BINANCE<br>Только информационная аналитика. Не финансовая рекомендация.</div>
+</div>
+<nav class="bottom-nav"><div class="bottom-inner"><button class="navbtn active" data-page="overview"><span class="navicon">⌂</span>Обзор</button><button class="navbtn" data-page="signals"><span class="navicon">⌁</span>Сигналы</button><button class="navbtn" data-page="history"><span class="navicon">◷</span>История</button><button class="navbtn" data-page="plans"><span class="navicon">◇</span>Подписка</button></div></nav>
+<div class="toast" id="toast" role="status"></div>
 <script>
-const tg = window.Telegram && window.Telegram.WebApp;
-if(tg){tg.ready();tg.expand();}
-
-const fmtPrice = n => Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
-const fmtVol = n => {
-  n=Number(n);
-  if(!Number.isFinite(n)) return '—';
-  if(n>=1e9) return '$'+(n/1e9).toFixed(2)+'B';
-  if(n>=1e6) return '$'+(n/1e6).toFixed(2)+'M';
-  return '$'+n.toLocaleString('en-US',{maximumFractionDigits:0});
-};
-const fmtChange = n => (n>0?'+':'')+Number(n).toFixed(2)+'%';
-
-function setText(id,value){const el=document.getElementById(id);if(el)el.textContent=value;}
-function setChange(id,n){
-  const el=document.getElementById(id);
-  if(!el)return;
-  el.textContent=fmtChange(n);
-  el.className='change '+(n>0?'up':n<0?'down':'');
+(function(){
+'use strict';
+const tg=window.Telegram&&window.Telegram.WebApp?window.Telegram.WebApp:null;
+if(tg){try{tg.ready();tg.expand();}catch(e){}}
+const $=id=>document.getElementById(id);
+const state={prices:{},changes:{},analysis:{},charts:{},lastHistoryKey:''};
+const HISTORY_KEY='cryptoMonacoHistoryV2';
+const money=(n)=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:n>=100?2:n>=1?3:5}).format(n);
+const timeText=(d)=>new Date(d).toLocaleString('ru-RU',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
+function toast(msg){const el=$('toast');el.textContent=msg;el.style.display='block';clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.style.display='none',2800)}
+function setConnection(ok,msg){$('connectionDot').style.background=ok?'var(--green)':'var(--red)';$('connectionText').textContent=msg}
+function getHistory(){try{return JSON.parse(localStorage.getItem(HISTORY_KEY)||'[]')}catch(e){return []}}
+function saveHistory(items){try{localStorage.setItem(HISTORY_KEY,JSON.stringify(items.slice(0,100)))}catch(e){}}
+function ema(values,period){if(!values.length)return 0;const alpha=2/(period+1);let result=values[0];for(let i=1;i<values.length;i++)result=values[i]*alpha+result*(1-alpha);return result}
+function rsi(values,period=14){if(values.length<=period)return 50;let gains=0,losses=0;for(let i=values.length-period;i<values.length;i++){const delta=values[i]-values[i-1];if(delta>0)gains+=delta;else losses-=delta}if(losses===0)return gains===0?50:100;return 100-100/(1+gains/losses)}
+function analyze(candles,symbol){
+const closes=candles.map(c=>Number(c[4]));
+const ranges=candles.map(c=>Number(c[2])-Number(c[3]));
+const price=closes[closes.length-1];
+const fast=ema(closes.slice(-60),9);
+const slow=ema(closes.slice(-60),21);
+const momentum=rsi(closes);
+const atr=ranges.slice(-14).reduce((a,b)=>a+b,0)/Math.min(14,ranges.length);
+let direction='WAIT';
+if(fast>slow&&momentum>=52&&momentum<=68)direction='LONG';
+else if(fast<slow&&momentum>=32&&momentum<=48)direction='SHORT';
+const separation=Math.abs(fast-slow)/price*100;
+const score=direction==='WAIT'?Math.round(Math.min(65,35+Math.abs(momentum-50)*.8)):Math.round(Math.min(92,55+separation*10+Math.abs(momentum-50)*.7));
+const sign=direction==='SHORT'?-1:1;
+return{symbol,direction,price,fast,slow,momentum,atr,score,entry:price,stop:direction==='WAIT'?null:price-sign*atr*1.5,target1:direction==='WAIT'?null:price+sign*atr*1.5,target2:direction==='WAIT'?null:price+sign*atr*2.5,updated:Date.now()}
 }
-
-async function loadMarket(){
-  setText('feedStatus','ОБНОВЛЕНИЕ ДАННЫХ...');
-  const bar=document.getElementById('marketProgress');
-  if(bar)bar.style.width='25%';
-  try{
-    const response=await fetch('https://api.binance.com/api/v3/ticker/24hr?symbols=%5B%22ETHUSDT%22%2C%22SOLUSDT%22%5D',{cache:'no-store'});
-    if(!response.ok)throw new Error('Market unavailable');
-    const data=await response.json();
-    const map={};
-    data.forEach(item=>map[item.symbol]=item);
-    const eth=map.ETHUSDT,sol=map.SOLUSDT;
-    if(!eth||!sol)throw new Error('Missing market data');
-    const ep='$'+fmtPrice(eth.lastPrice),sp='$'+fmtPrice(sol.lastPrice);
-    const ec=Number(eth.priceChangePercent),sc=Number(sol.priceChangePercent);
-    ['ethPrice','ethPrice2','ethSignalPrice','ethAnalyticsPrice'].forEach(id=>setText(id,ep));
-    ['solPrice','solPrice2','solSignalPrice','solAnalyticsPrice'].forEach(id=>setText(id,sp));
-    ['ethChange','ethChange2','ethSignalChange','ethAnalyticsChange'].forEach(id=>setChange(id,ec));
-    ['solChange','solChange2','solSignalChange','solAnalyticsChange'].forEach(id=>setChange(id,sc));
-    setText('ethVol',fmtVol(eth.quoteVolume));
-    setText('solVol',fmtVol(sol.quoteVolume));
-    setText('ethAnalyticsVol',fmtVol(eth.quoteVolume));
-    setText('solAnalyticsVol',fmtVol(sol.quoteVolume));
-    setText('feedStatus','РЫНОЧНЫЕ ДАННЫЕ ОБНОВЛЕНЫ');
-    if(bar)bar.style.width='100%';
-  }catch(error){
-    setText('feedStatus','ДАННЫЕ ВРЕМЕННО НЕДОСТУПНЫ');
-    if(bar)bar.style.width='0%';
-    ['ethPrice','ethPrice2','ethSignalPrice','ethAnalyticsPrice','solPrice','solPrice2','solSignalPrice','solAnalyticsPrice'].forEach(id=>{
-      const el=document.getElementById(id);
-      if(el&&el.textContent==='Загрузка...')el.textContent='Нет данных';
-    });
-  }
+function chartFor(id,values,positive){
+const canvas=$(id);
+if(!canvas||!window.Chart)return;
+const existing=state.charts[id];
+if(existing){
+existing.data.labels=values.map((_,i)=>i+1);
+existing.data.datasets[0].data=values;
+existing.data.datasets[0].borderColor=positive?'#2cff9a':'#ff5572';
+existing.update('none');
+return
 }
-
-function showToast(message){
-  const el=document.getElementById('toast');
-  el.textContent=message;
-  el.style.display='block';
-  clearTimeout(window.toastTimer);
-  window.toastTimer=setTimeout(()=>el.style.display='none',3500);
+state.charts[id]=new Chart(canvas,{type:'line',data:{labels:values.map((_,i)=>i+1),datasets:[{data:values,borderColor:positive?'#2cff9a':'#ff5572',borderWidth:2,pointRadius:0,tension:.3,fill:true,backgroundColor:positive?'rgba(44,255,154,.07)':'rgba(255,85,114,.07)'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{enabled:false}},scales:{x:{display:false},y:{display:false}},animation:false}})
 }
-
-function openPage(name){
-  document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===name));
-  document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===name));
-  window.scrollTo({top:0,behavior:'smooth'});
+async function loadTicker(symbol,prefix){
+const response=await fetch('https://api.binance.com/api/v3/ticker/24hr?symbol='+symbol,{cache:'no-store'});
+if(!response.ok)throw new Error('ticker');
+const d=await response.json();
+const price=Number(d.lastPrice),change=Number(d.priceChangePercent);
+state.prices[symbol]=price;
+state.changes[symbol]=change;
+$(prefix+'Price').textContent=money(price);
+const ch=$(prefix+'Change');
+ch.textContent=(change>=0?'▲ +':'▼ ')+change.toFixed(2)+'% за 24 ч';
+ch.className='change '+(change>=0?'up':'down');
+return{price,change}
 }
-document.querySelectorAll('[data-page]').forEach(button=>{
-  button.addEventListener('click',()=>openPage(button.dataset.page));
+async function loadAnalysis(symbol){
+const r=await fetch('https://api.binance.com/api/v3/klines?symbol='+symbol+'&interval=15m&limit=100',{cache:'no-store'});
+if(!r.ok)throw new Error('klines');
+const candles=await r.json();
+const item=analyze(candles,symbol);
+state.analysis[symbol]=item;
+chartFor(symbol==='ETHUSDT'?'ethChart':'solChart',candles.slice(-40).map(c=>Number(c[4])),Number(candles[candles.length-1][4])>=Number(candles[candles.length-2][4]));
+return item
+}
+function cardHtml(a){
+const cls=a.direction==='LONG'?'':' '+(a.direction==='SHORT'?'short':'wait');
+const stateText=a.direction==='WAIT'?'WAIT · ОЖИДАНИЕ':a.direction;
+return `<article class="panel signal-card${cls}"><div class="signal-top"><div class="coin"><div class="coin-icon ${a.symbol==='SOLUSDT'?'sol':''}">${a.symbol==='ETHUSDT'?'Ξ':'◎'}</div><div><div class="coin-name">${a.symbol==='ETHUSDT'?'Ethereum':'Solana'}</div><div class="coin-pair">${a.symbol} · 15 MIN</div></div></div><span class="score">RATING ${a.score}/100</span></div><div class="signal-state" style="margin-top:16px">${stateText}</div><div class="signal-price">${money(a.price)}</div><div class="muted" style="font-size:11px">RSI ${a.momentum.toFixed(1)} · EMA ${a.fast>a.slow?'bullish':a.fast<a.slow?'bearish':'neutral'}</div><div class="metrics"><div class="metric"><span>ВХОД</span><b>${a.direction==='WAIT'?'—':money(a.entry)}</b></div><div class="metric"><span>СТОП-ЛОСС</span><b>${a.stop===null?'—':money(a.stop)}</b></div><div class="metric"><span>ЦЕЛЬ 1</span><b>${a.target1===null?'—':money(a.target1)}</b></div><div class="metric"><span>ЦЕЛЬ 2</span><b>${a.target2===null?'—':money(a.target2)}</b></div></div><div class="reason">${a.direction==='LONG'?'Тренд и RSI поддерживают восходящий сценарий. Дождись подтверждения перед любым решением.':a.direction==='SHORT'?'Тренд и RSI поддерживают нисходящий сценарий. Учитывай волатильность и риск.':'Условия не дают достаточно согласованного подтверждения. Лучше дождаться нового закрытия свечи.'}</div></article>`
+}
+function recordSignals(items){
+let history=getHistory();
+let changed=false;
+items.forEach(a=>{
+if(!a)return;
+const key=a.symbol+'|'+a.direction+'|'+Math.round(a.price*1000)+'|'+Math.floor(a.updated/900000);
+if(a.direction!=='WAIT'&&key!==state.lastHistoryKey&&!history.some(x=>x.key===key)){
+history.unshift({key,symbol:a.symbol,direction:a.direction,price:a.price,score:a.score,time:a.updated});
+changed=true;
+state.lastHistoryKey=key
+}
 });
-
-loadMarket();
-setInterval(loadMarket,30000);
+if(changed)saveHistory(history);
+renderHistory()
+}
+function renderAnalysis(){
+const items=['ETHUSDT','SOLUSDT'].map(s=>state.analysis[s]).filter(Boolean);
+if(!items.length)return;
+const html=items.map(cardHtml).join('');
+$('overviewSignals').innerHTML=html;
+$('signalCards').innerHTML=html;
+const active=items.filter(a=>a.direction!=='WAIT').sort((a,b)=>b.score-a.score)[0];
+$('bestScenarioText').textContent=active?`${active.symbol.replace('USDT','')} ${active.direction} · рейтинг ${active.score}/100 · ${money(active.price)}. Это технический рейтинг, а не вероятность успеха.`:'Пока нет подтверждённого сценария по ETH или SOL. Алгоритм ожидает совпадения условий.';
+$('analysisUpdated').textContent='Обновлено '+new Date().toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'});
+recordSignals(items)
+}
+function renderHistory(){
+const list=$('historyList');
+if(!list)return;
+const items=getHistory();
+if(!items.length){list.innerHTML='<div class="empty">Пока нет сохранённых сценариев. История появится после подтверждённого LONG или SHORT.</div>';return}
+list.innerHTML='';
+items.forEach(a=>{
+const row=document.createElement('div');
+row.className='history-row';
+const left=document.createElement('div');
+const title=document.createElement('b');
+title.textContent=a.symbol.replace('USDT','')+' · '+a.direction;
+title.className=a.direction==='LONG'?'up':'down';
+const sub=document.createElement('small');
+sub.textContent=money(Number(a.price))+' · '+timeText(a.time);
+left.append(title,sub);
+const rating=document.createElement('b');
+rating.textContent=(a.score||'—')+'/100';
+rating.className='muted';
+row.append(left,rating);
+list.appendChild(row)
+})
+}
+async function refresh(){
+try{
+setConnection(true,'Подключение…');
+await Promise.all([loadTicker('ETHUSDT','eth'),loadTicker('SOLUSDT','sol')]);
+const analyses=await Promise.allSettled([loadAnalysis('ETHUSDT'),loadAnalysis('SOLUSDT')]);
+const ok=analyses.some(x=>x.status==='fulfilled');
+if(!ok)throw new Error('analysis');
+setConnection(true,'Рынок онлайн');
+renderAnalysis()
+}catch(e){
+setConnection(false,'Нет соединения');
+if(!$('ethPrice').textContent||$('ethPrice').textContent==='Загрузка…'){
+$('ethPrice').textContent='Недоступно';
+$('solPrice').textContent='Недоступно'
+}
+toast('Не удалось обновить данные рынка. Проверь подключение и повтори попытку.')
+}
+}
+function showPage(name){
+document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id==='page-'+name));
+document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===name));
+window.scrollTo({top:0,behavior:'smooth'});
+if(name==='history')renderHistory()
+}
+document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.goto)));
+document.querySelectorAll('[data-plan]').forEach(b=>b.addEventListener('click',()=>toast('Тариф '+b.dataset.plan+' выбран в демо-режиме. Оплата ещё не подключена.')));
+$('clearHistory').addEventListener('click',()=>{if(confirm('Очистить локальную историю сигналов?')){saveHistory([]);renderHistory();toast('Локальная история очищена')}});
+$('telegramButton').addEventListener('click',()=>{if(tg){try{tg.openTelegramLink('https://t.me/');return}catch(e){}}window.open('https://t.me/','_blank','noopener')});
+if(tg&&tg.initDataUnsafe&&tg.initDataUnsafe.user){
+const user=tg.initDataUnsafe.user;
+$('profileName').textContent=[user.first_name,user.last_name].filter(Boolean).join(' ')||'Пользователь Telegram';
+$('profileHandle').textContent=user.username?'@'+user.username:'Telegram Mini App'
+}
+renderHistory();
+refresh();
+setInterval(refresh,30000);
+})();
 </script>
 </body>
 </html>

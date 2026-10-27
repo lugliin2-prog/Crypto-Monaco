@@ -130,3 +130,184 @@ renderProfile();renderHistory();renderAll();loadMarket();setInterval(()=>{if(!do
 </script>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#050a08">
+<title>CRYPTO MONACO</title>
+<style>
+:root{color-scheme:dark;--bg:#050a08;--card:#0b1511;--line:#20352c;--green:#28f0ad;--muted:#8ca69a;--red:#ff5878}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at top left,#103c2a 0,transparent 48%),var(--bg);color:#f3fff9;font-family:-apple-system,BlinkMacSystemFont,Arial,sans-serif}
+main{max-width:900px;margin:auto;padding:30px 20px 100px}
+header{display:flex;align-items:center;gap:14px;margin-bottom:40px}
+.logo{width:62px;height:62px;display:grid;place-items:center;border:1px solid #16875d;border-radius:20px;color:var(--green);font-size:34px;font-weight:900}
+.brand{font-size:21px;font-weight:900;letter-spacing:2px}
+.sub{font-size:12px;color:var(--green);letter-spacing:3px;margin-top:8px}
+.status{margin-left:auto;font-size:12px;color:var(--muted);text-align:right}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--green);margin-right:6px}
+.eyebrow{color:var(--green);font-size:13px;font-weight:800;letter-spacing:4px;margin:35px 0}
+h1{font-size:clamp(32px,7vw,52px);letter-spacing:-2px;margin:0 0 12px}
+.desc{color:var(--muted);line-height:1.7;font-size:16px}
+.actions{display:flex;gap:12px;margin:26px 0}
+button{border:1px solid var(--line);background:var(--card);color:white;padding:17px 20px;border-radius:20px;font-weight:800;font-size:15px}
+button.primary{background:linear-gradient(110deg,#20e9a5,#68ffc7);color:#03140c;border:0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.card{background:linear-gradient(145deg,#0c1912,#07100c);border:1px solid var(--line);border-radius:30px;padding:25px;min-width:0}
+.label{color:var(--muted);font-size:12px;font-weight:800;letter-spacing:3px}
+.price{font-size:clamp(25px,6vw,38px);font-weight:900;margin:22px 0 10px;overflow-wrap:anywhere}
+.change{font-size:15px}
+.green{color:var(--green)}.red{color:var(--red)}
+.value{font-size:27px;font-weight:900;margin:20px 0 10px;overflow-wrap:anywhere}
+.note{font-size:14px;color:var(--muted);line-height:1.6}
+h2{font-size:25px;margin:38px 0 18px}
+.wide{grid-column:1/-1}
+footer{position:fixed;bottom:0;left:0;right:0;background:#06100c;border-top:1px solid var(--line);padding:16px;text-align:center;color:var(--muted);font-size:12px}
+@media(max-width:440px){main{padding:25px 16px 100px}.grid{gap:10px}.card{padding:18px;border-radius:25px}.brand{font-size:17px}.status{max-width:90px}.label{font-size:10px;letter-spacing:2px}.value{font-size:23px}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div class="logo">M</div>
+<div><div class="brand">CRYPTO MONACO</div><div class="sub">TRADING INTELLIGENCE · ETH / SOL</div></div>
+<div class="status"><span class="dot" id="dot"></span><span id="connection">Подключение…</span></div>
+</header>
+
+<div class="eyebrow">● SPOT MARKET · ETH / SOL</div>
+<h1>Market intelligence</h1>
+<div class="desc">Рыночная картина, импульс, сценарии и контроль риска</div>
+
+<div class="actions">
+<button id="export">↓ Экспорт</button>
+<button class="primary" id="refresh">↻ Обновить</button>
+</div>
+
+<div class="grid">
+<section class="card">
+<div class="label">ETH / USDT</div>
+<div class="price" id="ethPrice">Загрузка…</div>
+<div class="change" id="ethChange">Получаем данные</div>
+</section>
+<section class="card">
+<div class="label">SOL / USDT</div>
+<div class="price" id="solPrice">Загрузка…</div>
+<div class="change" id="solChange">Получаем данные</div>
+</section>
+<section class="card">
+<div class="label">РЫНОК ОБНОВЛЁН</div>
+<div class="value" id="updated">—</div>
+<div class="note">Последний успешный ответ API</div>
+</section>
+<section class="card">
+<div class="label">СОСТОЯНИЕ</div>
+<div class="value" id="state">CONNECTING</div>
+<div class="note" id="detail">Загружаем котировки</div>
+</section>
+<section class="card wide">
+<div class="label">АВТОМАТИЧЕСКОЕ ОБНОВЛЕНИЕ</div>
+<div class="value green">3 секунды</div>
+<div class="note">Котировки загружаются из публичного API Binance. Обновление выполняется автоматически, пока страница открыта. При ошибке соединения система повторит попытку.</div>
+</section>
+</div>
+
+<h2>Активы под наблюдением</h2>
+<div class="grid">
+<section class="card"><div class="label">ETHEREUM</div><div class="value">ETH</div><div class="note" id="ethMeta">Ожидаем данные рынка</div></section>
+<section class="card"><div class="label">SOLANA</div><div class="value">SOL</div><div class="note" id="solMeta">Ожидаем данные рынка</div></section>
+</div>
+</main>
+<footer>CRYPTO MONACO · LIVE MARKET DATA · NOT FINANCIAL ADVICE</footer>
+<script>
+(()=>{
+"use strict";
+const $=id=>document.getElementById(id);
+const symbols=["ETHUSDT","SOLUSDT"];
+const market={};
+let busy=false,lastSuccess=0,failures=0;
+
+function money(v){
+ return "$"+Number(v).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:8});
+}
+function setChange(id,v){
+ const el=$(id),n=Number(v);
+ el.textContent=(n>0?"+":"")+n.toFixed(2)+"% за 24ч";
+ el.className="change "+(n>=0?"green":"red");
+}
+function render(symbol,data){
+ market[symbol]=data;
+ const key=symbol==="ETHUSDT"?"eth":"sol";
+ $(key+"Price").textContent=money(data.lastPrice);
+ setChange(key+"Change",data.priceChangePercent);
+ $(key+"Meta").textContent="24ч: "+money(data.highPrice)+" — "+money(data.lowPrice);
+}
+async function getTicker(symbol){
+ const url="https://api.binance.com/api/v3/ticker/24hr?symbol="+symbol;
+ const response=await fetch(url,{cache:"no-store"});
+ if(!response.ok)throw new Error("Binance API HTTP "+response.status);
+ const data=await response.json();
+ if(!data.lastPrice||!Number.isFinite(Number(data.lastPrice)))throw new Error("Некорректные данные "+symbol);
+ return data;
+}
+async function loadMarket(){
+ if(busy||document.hidden)return;
+ busy=true;
+ $("connection").textContent="Обновление";
+ $("state").textContent="CONNECTING";
+ try{
+  const results=await Promise.allSettled(symbols.map(getTicker));
+  let success=0;
+  results.forEach((result,i)=>{
+   if(result.status==="fulfilled"){
+    render(symbols[i],result.value);
+    success++;
+   }else{
+    console.error(symbols[i],result.reason);
+   }
+  });
+  if(success===0)throw new Error("Не удалось получить котировки");
+  lastSuccess=Date.now();
+  failures=0;
+  $("updated").textContent=new Date(lastSuccess).toLocaleTimeString("ru-RU");
+  $("state").textContent=success===2?"ONLINE":"PARTIAL";
+  $("detail").textContent=success===2?"Последнее обновление "+$("updated").textContent:"Загружена только часть данных";
+  $("connection").textContent=success===2?"LIVE":"Частично";
+  $("dot").style.background=success===2?"#28f0ad":"#ffc857";
+ }catch(error){
+  failures++;
+  $("state").textContent="RETRYING";
+  $("connection").textContent="Нет связи";
+  $("dot").style.background="#ff5878";
+  $("detail").textContent=error.message+" · Повторная попытка";
+  if(!lastSuccess){
+   symbols.forEach(s=>{
+    const key=s==="ETHUSDT"?"eth":"sol";
+    if(!market[s])$(key+"Price").textContent="Нет данных";
+    $(key+"Change").textContent="API недоступен";
+   });
+  }
+  console.error("Market update failed:",error);
+ }finally{
+  busy=false;
+ }
+}
+$("refresh").addEventListener("click",loadMarket);
+$("export").addEventListener("click",()=>{
+ const blob=new Blob([JSON.stringify({exportedAt:new Date().toISOString(),market},null,2)],{type:"application/json"});
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement("a");
+ a.href=url;a.download="crypto-monaco-market.json";a.click();
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
+});
+document.addEventListener("visibilitychange",()=>{
+ if(!document.hidden)loadMarket();
+});
+loadMarket();
+setInterval(loadMarket,3000);
+})();
+</script>
+</body>
+</html>

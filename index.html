@@ -125,7 +125,7 @@ document.addEventListener('click',e=>{const tf=e.target.closest('[data-tf]');if(
 window.addEventListener('resize',()=>SYMBOLS.forEach(s=>{if(state.charts[s])state.charts[s].applyOptions({width:$('chart-'+s)?.clientWidth||320})}));
 window.addEventListener('online',()=>loadMarket());
 if(window.Telegram?.WebApp){try{window.Telegram.WebApp.ready();window.Telegram.WebApp.expand()}catch(e){}}
-renderProfile();renderHistory();renderAll();loadMarket();setInterval(()=>{if(!document.hidden)loadMarket()},60000);
+renderProfile();renderHistory();renderAll();loadMarket();setInterval(()=>{if(!document.hidden)loadMarket()},setInterval(()=>{if(!document.hidden&&!state.loading)loadMarket()},3000);
 })();
 </script>
 </body>

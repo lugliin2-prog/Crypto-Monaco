@@ -9,7 +9,7 @@
 <script src="https://unpkg.com/lightweight-charts@4.2.0/dist/lightweight-charts.standalone.production.js"></script>
 <style>
 :root{color-scheme:dark;--bg:#050a08;--panel:#0b1511;--line:rgba(123,180,151,.18);--muted:#8fa69a;--green:#28f0a0;--red:#ff5578;--yellow:#ffd166;--text:#f2fff8}
-*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;background:radial-gradient(ellipse at 8% 0%,#123324,#07120d 38%,#050908 80%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;min-height:100vh;padding-bottom:100px}button,input,select{font:inherit;color:inherit}button{cursor:pointer}.topbar{padding:20px 18px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}.brand{display:flex;align-items:center;gap:11px}.logo{width:44px;height:44px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(145deg,#1b6045,#0c251a);border:1px solid #23764f;color:var(--green);font-weight:900;font-size:22px}.brand-name{font-weight:900;letter-spacing:1.4px;font-size:15px}.brand-sub{font-size:10px;letter-spacing:2.5px;color:var(--green);margin-top:5px}.status{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:10px}.dot{height:7px;width:7px;border-radius:50%;background:var(--green)}.wrap{padding:8px 18px 25px;max-width:900px;margin:auto}.eyebrow{font-size:10px;letter-spacing:3px;font-weight:900;color:var(--green);margin:15px 0 22px}.page{display:none}.page.active{display:block}.heading-row{display:flex;justify-content:space-between;gap:12px;margin:12px 0 18px}.heading{font-size:clamp(28px,7vw,38px);font-weight:900;letter-spacing:-1.3px;line-height:1.1;margin:0}.subheading{font-size:13px;color:var(--muted);line-height:1.6;margin:10px 0 0}.btn{border:1px solid var(--line);background:#0c1712;padding:12px 15px;border-radius:15px;font-size:12px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:8px}.btn.primary{background:linear-gradient(120deg,#27f2a0,#77ffbe);color:#04150d;border:0}.btn.full{width:100%}.btn.small{padding:9px 11px;font-size:11px}.actions{display:flex;gap:9px;flex-wrap:wrap;margin:18px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{background:linear-gradient(145deg,rgba(14,29,22,.97),rgba(8,16,12,.97));border:1px solid var(--line);border-radius:23px;padding:17px;min-width:0}.stat-label{font-size:10px;color:var(--muted);letter-spacing:2px;font-weight:900;text-transform:uppercase}.stat-value{font-size:clamp(20px,5vw,29px);font-weight:900;margin:11px 0 7px;overflow-wrap:anywhere}.stat-foot{font-size:12px;color:var(--muted);line-height:1.5;overflow-wrap:anywhere}.positive{color:var(--green)!important}.negative{color:var(--red)!important}.neutral{color:var(--yellow)!important}.section-title{font-size:18px;font-weight:900;margin:25px 0 14px}.asset-card{padding:17px;margin-top:13px}.asset-top{display:flex;justify-content:space-between;align-items:center;gap:10px}.coin-title{display:flex;align-items:center;gap:10px;min-width:0}.coin-icon{width:43px;height:43px;border-radius:14px;display:grid;place-items:center;background:#103321;color:var(--green);font-size:20px;font-weight:900;border:1px solid #1b6544}.coin-name{font-weight:900;font-size:16px}.coin-pair{font-size:11px;color:var(--muted);margin-top:4px}.live,.pill{border:1px solid #245b43;border-radius:99px;padding:7px 10px;font-size:10px;font-weight:900;color:var(--green);background:#0d281c;white-space:nowrap}.price-row{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;margin:22px 0 15px}.price{font-size:clamp(27px,7vw,39px);font-weight:900;letter-spacing:-1.3px}.change{font-size:12px;font-weight:800;margin-top:9px}.volume{text-align:right;font-size:11px;color:var(--muted);line-height:1.7}.volume strong{display:block;font-size:13px;color:var(--text)}.timeframes{display:flex;gap:7px;overflow-x:auto;padding:3px 0 12px}.tf{flex:0 0 auto;background:#0b1711;border:1px solid transparent;border-radius:12px;padding:10px 13px;color:#a4b7ac;font-weight:800;font-size:11px}.tf.active{background:#123b29;color:var(--green);border-color:#269660}.chart{width:100%;height:250px;min-height:250px;border-radius:14px;overflow:hidden;background:#08100c;position:relative}.chart canvas{display:block;width:100%;height:100%}.chart-note{font-size:10px;color:var(--muted);margin-top:9px}.mini-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}.mini-metric{padding:12px;background:#08110c;border-radius:13px;min-width:0}.mini-metric span{font-size:10px;color:var(--muted);display:block;margin-bottom:7px}.mini-metric strong{font-size:13px;overflow-wrap:anywhere}.signal-card{margin-top:12px}.signal-head{display:flex;justify-content:space-between;gap:10px;align-items:center}.signal-tag{border-radius:10px;padding:8px 11px;font-size:11px;font-weight:900}.signal-tag.long{background:#0c3b27;color:var(--green)}.signal-tag.short{background:#3a1420;color:var(--red)}.signal-tag.wait{background:#302813;color:var(--yellow)}.signal-price{font-size:28px;font-weight:900;margin:18px 0 6px}.signal-desc{font-size:12px;color:var(--muted);line-height:1.6}.levels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:16px}.level{background:#08110c;border-radius:12px;padding:10px 8px;min-width:0}.level span{display:block;color:var(--muted);font-size:9px;margin-bottom:7px}.level strong{font-size:12px;overflow-wrap:anywhere}.divider{height:1px;background:var(--line);margin:17px 0}.list{display:grid;gap:10px}.list-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px;border:1px solid var(--line);background:#0b1510;border-radius:16px}.list-row-title{font-size:13px;font-weight:800}.list-row-sub{font-size:11px;color:var(--muted);margin-top:5px;line-height:1.5}.empty{padding:22px;text-align:center;border:1px dashed #254435;border-radius:18px;color:var(--muted);font-size:12px;line-height:1.6}.tabs{position:fixed;z-index:20;bottom:0;left:0;right:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:3px;padding:9px 7px calc(9px + env(safe-area-inset-bottom));background:rgba(5,11,8,.96);backdrop-filter:blur(18px);border-top:1px solid var(--line)}.navbtn{min-width:0;display:flex;flex-direction:column;align-items:center;gap:5px;padding:9px 1px;background:transparent;color:#789084;border:0;border-radius:13px;font-size:9px;font-weight:800}.navicon{font-size:18px}.navbtn.active{color:var(--green);background:#103321}.scenario-card{border:1px solid var(--line);background:linear-gradient(145deg,#10251a,#08100c);border-radius:20px;padding:17px;margin:12px 0}.scenario-title{font-size:15px;font-weight:900}.scenario-sub{font-size:11px;color:var(--muted);line-height:1.6;margin-top:7px}.scenario-probs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0}.scenario-prob{background:#07100b;border-radius:12px;padding:11px 8px}.scenario-prob span{display:block;font-size:9px;color:var(--muted);margin-bottom:6px}.scenario-prob strong{font-size:15px}.scenario-bullets{font-size:12px;line-height:1.7;color:#b9c9c0;padding-left:18px}.utility-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.plan-grid{display:grid;gap:12px}.plan{padding:19px;border:1px solid var(--line);border-radius:21px;background:linear-gradient(140deg,#10251a,#09110d);position:relative}.plan.featured{border-color:#2bdc91}.plan h3{font-size:15px;margin:0}.plan-price{font-size:32px;font-weight:900;margin:14px 0 4px}.plan-price small{font-size:12px;color:var(--muted)}.plan ul{padding-left:18px;color:#b0c4b8;font-size:12px;line-height:1.9;margin:15px 0 19px}.badge-feature{position:absolute;right:14px;top:14px;color:#04150d;background:var(--green);border-radius:99px;padding:5px 8px;font-size:9px;font-weight:900}.profile-avatar{height:62px;width:62px;display:grid;place-items:center;border-radius:20px;background:linear-gradient(145deg,#1d6949,#10291c);color:var(--green);font-size:26px;font-weight:900}.profile-header{display:flex;align-items:center;gap:14px}.profile-name{font-size:18px;font-weight:900}.profile-id{font-size:11px;color:var(--muted);margin-top:5px}.notice{font-size:10px;color:#71877b;line-height:1.6;margin:18px 2px}.toast{position:fixed;z-index:50;left:18px;right:18px;bottom:110px;background:#183b29;border:1px solid #2a8054;color:#eafff3;padding:13px 15px;border-radius:14px;font-size:12px;display:none;overflow-wrap:anywhere}.toast.show{display:block}.hidden{display:none!important}input,select{width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:#08110c}
+*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;background:radial-gradient(ellipse at 8% 0%,#123324,#07120d 38%,#050908 80%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;min-height:100vh;padding-bottom:100px}button,input,select{font:inherit;color:inherit}button{cursor:pointer}.topbar{padding:20px 18px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}.brand{display:flex;align-items:center;gap:11px}.logo{width:44px;height:44px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(145deg,#1b6045,#0c251a);border:1px solid #23764f;color:var(--green);font-weight:900;font-size:22px}.brand-name{font-weight:900;letter-spacing:1.4px;font-size:15px}.brand-sub{font-size:10px;letter-spacing:2.5px;color:var(--green);margin-top:5px}.status{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:10px}.dot{height:7px;width:7px;border-radius:50%;background:var(--green)}.wrap{padding:8px 18px 25px;max-width:900px;margin:auto}.eyebrow{font-size:10px;letter-spacing:3px;font-weight:900;color:var(--green);margin:15px 0 22px}.page{display:none}.page.active{display:block}.heading-row{display:flex;justify-content:space-between;gap:12px;margin:12px 0 18px}.heading{font-size:clamp(28px,7vw,38px);font-weight:900;letter-spacing:-1.3px;line-height:1.1;margin:0}.subheading{font-size:13px;color:var(--muted);line-height:1.6;margin:10px 0 0}.btn{border:1px solid var(--line);background:#0c1712;padding:12px 15px;border-radius:15px;font-size:12px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:8px}.btn.primary{background:linear-gradient(120deg,#27f2a0,#77ffbe);color:#04150d;border:0}.btn.full{width:100%}.btn.small{padding:9px 11px;font-size:11px}.actions{display:flex;gap:9px;flex-wrap:wrap;margin:18px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{background:linear-gradient(145deg,rgba(14,29,22,.97),rgba(8,16,12,.97));border:1px solid var(--line);border-radius:23px;padding:17px;min-width:0}.stat-label{font-size:10px;color:var(--muted);letter-spacing:2px;font-weight:900;text-transform:uppercase}.stat-value{font-size:clamp(20px,5vw,29px);font-weight:900;margin:11px 0 7px;overflow-wrap:anywhere}.stat-foot{font-size:12px;color:var(--muted);line-height:1.5;overflow-wrap:anywhere}.positive{color:var(--green)!important}.negative{color:var(--red)!important}.neutral{color:var(--yellow)!important}.section-title{font-size:18px;font-weight:900;margin:25px 0 14px}.asset-card{padding:17px;margin-top:13px}.asset-top{display:flex;justify-content:space-between;align-items:center;gap:10px}.coin-title{display:flex;align-items:center;gap:10px;min-width:0}.coin-icon{width:43px;height:43px;border-radius:14px;display:grid;place-items:center;background:#103321;color:var(--green);font-size:20px;font-weight:900;border:1px solid #1b6544}.coin-name{font-weight:900;font-size:16px}.coin-pair{font-size:11px;color:var(--muted);margin-top:4px}.live,.pill{border:1px solid #245b43;border-radius:99px;padding:7px 10px;font-size:10px;font-weight:900;color:var(--green);background:#0d281c;white-space:nowrap}.price-row{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;margin:22px 0 15px}.price{font-size:clamp(27px,7vw,39px);font-weight:900;letter-spacing:-1.3px}.change{font-size:12px;font-weight:800;margin-top:9px}.volume{text-align:right;font-size:11px;color:var(--muted);line-height:1.7}.volume strong{display:block;font-size:13px;color:var(--text)}.timeframes{display:flex;gap:7px;overflow-x:auto;padding:3px 0 12px}.tf{flex:0 0 auto;background:#0b1711;border:1px solid transparent;border-radius:12px;padding:10px 13px;color:#a4b7ac;font-weight:800;font-size:11px}.tf.active{background:#123b29;color:var(--green);border-color:#269660}.chart{width:100%;height:250px;min-height:250px;border-radius:14px;overflow:hidden;background:#08100c;position:relative}.chart canvas{display:block;width:100%;height:100%}.chart-box{margin-top:16px}.chart-title{font-size:11px;color:var(--muted);font-weight:800;margin-bottom:8px}.chart-note{font-size:10px;color:var(--muted);margin-top:9px}.mini-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}.mini-metric{padding:12px;background:#08110c;border-radius:13px;min-width:0}.mini-metric span{font-size:10px;color:var(--muted);display:block;margin-bottom:7px}.mini-metric strong{font-size:13px;overflow-wrap:anywhere}.signal-card{margin-top:12px}.signal-head{display:flex;justify-content:space-between;gap:10px;align-items:center}.signal-tag{border-radius:10px;padding:8px 11px;font-size:11px;font-weight:900}.signal-tag.long{background:#0c3b27;color:var(--green)}.signal-tag.short{background:#3a1420;color:var(--red)}.signal-tag.wait{background:#302813;color:var(--yellow)}.signal-price{font-size:28px;font-weight:900;margin:18px 0 6px}.signal-desc{font-size:12px;color:var(--muted);line-height:1.6}.levels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:16px}.level{background:#08110c;border-radius:12px;padding:10px 8px;min-width:0}.level span{display:block;color:var(--muted);font-size:9px;margin-bottom:7px}.level strong{font-size:12px;overflow-wrap:anywhere}.divider{height:1px;background:var(--line);margin:17px 0}.list{display:grid;gap:10px}.list-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px;border:1px solid var(--line);background:#0b1510;border-radius:16px}.list-row-title{font-size:13px;font-weight:800}.list-row-sub{font-size:11px;color:var(--muted);margin-top:5px;line-height:1.5}.empty{padding:22px;text-align:center;border:1px dashed #254435;border-radius:18px;color:var(--muted);font-size:12px;line-height:1.6}.tabs{position:fixed;z-index:20;bottom:0;left:0;right:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:3px;padding:9px 7px calc(9px + env(safe-area-inset-bottom));background:rgba(5,11,8,.96);backdrop-filter:blur(18px);border-top:1px solid var(--line)}.navbtn{min-width:0;display:flex;flex-direction:column;align-items:center;gap:5px;padding:9px 1px;background:transparent;color:#789084;border:0;border-radius:13px;font-size:9px;font-weight:800}.navicon{font-size:18px}.navbtn.active{color:var(--green);background:#103321}.scenario-card{border:1px solid var(--line);background:linear-gradient(145deg,#10251a,#08100c);border-radius:20px;padding:17px;margin:12px 0}.scenario-title{font-size:15px;font-weight:900}.scenario-sub{font-size:11px;color:var(--muted);line-height:1.6;margin-top:7px}.scenario-probs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0}.scenario-prob{background:#07100b;border-radius:12px;padding:11px 8px}.scenario-prob span{display:block;font-size:9px;color:var(--muted);margin-bottom:6px}.scenario-prob strong{font-size:15px}.scenario-bullets{font-size:12px;line-height:1.7;color:#b9c9c0;padding-left:18px}.utility-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.plan-grid{display:grid;gap:12px}.plan{padding:19px;border:1px solid var(--line);border-radius:21px;background:linear-gradient(140deg,#10251a,#09110d);position:relative}.plan.featured{border-color:#2bdc91}.plan h3{font-size:15px;margin:0}.plan-price{font-size:32px;font-weight:900;margin:14px 0 4px}.plan-price small{font-size:12px;color:var(--muted)}.plan ul{padding-left:18px;color:#b0c4b8;font-size:12px;line-height:1.9;margin:15px 0 19px}.badge-feature{position:absolute;right:14px;top:14px;color:#04150d;background:var(--green);border-radius:99px;padding:5px 8px;font-size:9px;font-weight:900}.profile-avatar{height:62px;width:62px;display:grid;place-items:center;border-radius:20px;background:linear-gradient(145deg,#1d6949,#10291c);color:var(--green);font-size:26px;font-weight:900}.profile-header{display:flex;align-items:center;gap:14px}.profile-name{font-size:18px;font-weight:900}.profile-id{font-size:11px;color:var(--muted);margin-top:5px}.notice{font-size:10px;color:#71877b;line-height:1.6;margin:18px 2px}.toast{position:fixed;z-index:50;left:18px;right:18px;bottom:110px;background:#183b29;border:1px solid #2a8054;color:#eafff3;padding:13px 15px;border-radius:14px;font-size:12px;display:none;overflow-wrap:anywhere}.toast.show{display:block}.hidden{display:none!important}input,select{width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:#08110c}
 @media(min-width:650px){.wrap{padding-left:28px;padding-right:28px}.topbar{padding-left:28px;padding-right:28px}.plan-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.chart{height:330px}}
 </style>
 </head>
@@ -22,101 +22,126 @@
 <div class="eyebrow">● SPOT MARKET · ETH / SOL</div>
 <section class="page active" id="page-home">
 <div class="heading-row"><div><h1 class="heading">Market intelligence</h1><p class="subheading">Рыночная картина, импульс, сценарии и контроль риска</p></div></div>
-<div class="actions"><button class="btn" id="exportBtn">⇩ Экспорт</button><button class="btn primary" id="refreshBtn">↻ Обновить</button></div>
 <div class="grid">
-<div class="card"><div class="stat-label">ETH / USDT</div><div class="stat-value" id="homeEthPrice">Загрузка...</div><div class="stat-foot" id="homeEthChange">Получаем данные</div></div>
-<div class="card"><div class="stat-label">SOL / USDT</div><div class="stat-value" id="homeSolPrice">Загрузка...</div><div class="stat-foot" id="homeSolChange">Получаем данные</div></div>
-<div class="card"><div class="stat-label">Рынок обновлён</div><div class="stat-value" id="lastUpdated">—</div><div class="stat-foot">Последний успешный ответ API</div></div>
-<div class="card"><div class="stat-label">Состояние</div><div class="stat-value" id="apiState">CONNECTING</div><div class="stat-foot" id="apiHint">Загружаем котировки</div></div>
+<div class="card"><div class="stat-label">Статус рынка</div><div class="stat-value" id="apiState">Загрузка</div><div class="stat-foot" id="apiHint">Получение данных Binance</div></div>
+<div class="card"><div class="stat-label">Обновлено</div><div class="stat-value" id="lastUpdated">—</div><div class="stat-foot">Автоматическое обновление</div></div>
 </div>
-<h2 class="section-title">Активы под наблюдением</h2><div id="homeAssets"></div>
-<h2 class="section-title">Последние сигналы</h2><div id="homeSignals" class="list"></div>
-<h2 class="section-title">Сценарий рынка</h2><div id="homeScenario"></div>
+<div class="actions"><button class="btn primary" id="refreshBtn">↻ Обновить рынок</button><button class="btn" id="exportBtn">Экспорт снимка</button></div>
+<div id="assetOverview"></div>
+<h2 class="section-title">Согласованность таймфреймов</h2><div id="multiTfPanel" class="grid"></div>
+<h2 class="section-title">Снимок стакана</h2><div id="orderBookPanel" class="grid"></div>
+<h2 class="section-title">События рынка</h2><div id="eventPanel" class="list"></div>
+<h2 class="section-title">Сценарий рынка</h2><div id="scenarioPanel"></div>
+<div class="notice">CRYPTO MONACO использует публичные рыночные данные. Аналитические сценарии не гарантируют будущую доходность и не являются финансовой рекомендацией.</div>
 </section>
 <section class="page" id="page-market">
-<div class="heading-row"><div><h1 class="heading">Рынок</h1><p class="subheading">Котировки, свечи, уровни и технические индикаторы</p></div><span class="pill">LIVE DATA</span></div>
-<div class="actions"><button class="btn primary" id="marketRefreshBtn">↻ Обновить</button><button class="btn" id="marketExportBtn">⇩ Экспорт</button></div><div id="marketAssets"></div>
-<h2 class="section-title">Мультитаймфрейм-подтверждение</h2>
-<p class="stat-foot">Сравнение направления на 5м, 15м, 1ч и 4ч. Это технические условия, не вероятность прибыльной сделки.</p>
-<div id="multiTfPanel" class="grid"></div>
-<h2 class="section-title">Стакан ордеров Binance</h2>
-<div id="orderBookPanel" class="grid"><div class="empty">Загружаем стакан…</div></div>
-<h2 class="section-title">Детектор событий</h2>
-<div id="eventPanel" class="list"><div class="empty">События появятся после загрузки свечей.</div></div>
-<h2 class="section-title">Риск-менеджер</h2>
+<div class="heading-row"><div><h1 class="heading">Рынок</h1><p class="subheading">Цены, свечи и уровни для BTC, ETH и SOL</p></div></div>
+<div class="actions"><button class="btn primary" id="marketRefreshBtn">↻ Обновить</button><button class="btn" id="marketExportBtn">Экспорт</button></div>
+<div id="marketAssets"></div>
+<h2 class="section-title">Ценовые уведомления</h2>
 <div class="card">
-  <p class="stat-foot">Расчёт для планирования сделки. Не отправляет ордера на биржу.</p>
-  <div class="grid" style="margin-top:12px">
-    <div><label class="stat-label" for="riskSymbol">Актив</label><select id="riskSymbol" style="margin-top:8px"><option value="ETHUSDT">ETH / USDT</option><option value="SOLUSDT">SOL / USDT</option></select></div>
-    <div><label class="stat-label" for="riskCapital">Депозит (USDT)</label><input id="riskCapital" type="number" min="1" value="1000" style="margin-top:8px"></div>
-    <div><label class="stat-label" for="riskPct">Риск на сделку (%)</label><input id="riskPct" type="number" min="0.1" max="5" step="0.1" value="1" style="margin-top:8px"></div>
-    <div><label class="stat-label" for="riskEntry">Цена входа</label><input id="riskEntry" type="number" min="0" step="any" placeholder="Авто из рынка" style="margin-top:8px"></div>
-    <div><label class="stat-label" for="riskStop">Стоп-лосс</label><input id="riskStop" type="number" min="0" step="any" placeholder="Введи цену стопа" style="margin-top:8px"></div>
-    <div><label class="stat-label" for="riskTarget">Тейк-профит</label><input id="riskTarget" type="number" min="0" step="any" placeholder="Необязательно" style="margin-top:8px"></div>
-  </div>
-  <div class="utility-row"><button class="btn primary" id="calcRiskBtn">Рассчитать риск</button><button class="btn" id="useSignalBtn">Подставить уровни сценария</button></div>
-  <div id="riskResult" class="mini-grid"><div class="empty">Заполни вход и стоп, чтобы рассчитать размер позиции.</div></div>
+<div class="grid">
+<div><label class="stat-label" for="alertSymbol">Актив</label><select id="alertSymbol" style="margin-top:8px"><option value="BTCUSDT">BTC / USDT</option><option value="ETHUSDT">ETH / USDT</option><option value="SOLUSDT">SOL / USDT</option></select></div>
+<div><label class="stat-label" for="alertCondition">Условие</label><select id="alertCondition" style="margin-top:8px"><option value="above">Цена выше</option><option value="below">Цена ниже</option></select></div>
+</div>
+<div style="margin-top:12px"><label class="stat-label" for="alertPrice">Ценовой уровень</label><input id="alertPrice" type="number" min="0" step="any" placeholder="Например, 3500" style="margin-top:8px"></div>
+<div class="utility-row"><button class="btn primary" id="addAlertBtn">＋ Создать уведомление</button><button class="btn" id="enableNotificationsBtn">Разрешить уведомления</button></div>
+<div id="priceAlertsList" class="list" style="margin-top:12px"></div>
+<p class="notice">Уведомления срабатывают, пока страница открыта и получает обновления рынка. Это не серверные уведомления и не торговые ордера.</p>
 </div>
 </section>
 <section class="page" id="page-signals">
-<div class="heading-row"><div><h1 class="heading">Сигналы</h1><p class="subheading">ETH и SOL анализируются независимо. Сценарии не гарантируют результат.</p></div></div>
-<div id="signalAssets"></div><h2 class="section-title">Наиболее убедительный сценарий</h2><div id="bestScenario"></div>
+<div class="heading-row"><div><h1 class="heading">Сигналы</h1><p class="subheading">ETH и SOL: отдельный анализ и сравнение сценариев</p></div></div>
+<div class="actions"><button class="btn primary" id="generateSignalsBtn">↻ Обновить анализ</button></div>
+<div id="signalsPanel"></div>
+<h2 class="section-title">Сравнение активов</h2>
+<div id="comparisonPanel" class="grid"></div>
+<div class="notice">Сигналы основаны на технических индикаторах и не гарантируют прибыль. Всегда проверяй риск перед сделкой.</div>
 </section>
+
 <section class="page" id="page-history">
-<div class="heading-row"><div><h1 class="heading">История</h1><p class="subheading">Сохранённые снимки анализа и динамика сигналов</p></div></div>
-<div class="actions"><button class="btn" id="clearHistoryBtn">Очистить историю</button><button class="btn" id="historyExportBtn">Экспорт истории</button></div>
-<div id="historyList" class="list"></div>
-</section>
-<section class="page" id="page-plans">
-<div class="heading-row"><div><h1 class="heading">Подписка</h1><p class="subheading">Тарифы доступа к аналитике</p></div></div>
-<div class="plan-grid">
-<div class="plan"><h3>PRO</h3><div class="plan-price">€15<small> / мес.</small></div><ul><li>Анализ ETH и SOL</li><li>Технические сценарии</li><li>История наблюдений</li></ul><button class="btn full" data-plan="PRO">Выбрать PRO</button></div>
-<div class="plan featured"><span class="badge-feature">POPULAR</span><h3>ELITE</h3><div class="plan-price">€30<small> / мес.</small></div><ul><li>Всё из PRO</li><li>Мультитаймфрейм-анализ</li><li>Дополнительные события рынка</li></ul><button class="btn primary full" data-plan="ELITE">Выбрать ELITE</button></div>
-<div class="plan"><h3>VIP</h3><div class="plan-price">€50<small> / мес.</small></div><ul><li>Всё из ELITE</li><li>Расширенная аналитика</li><li>Приоритетный доступ</li></ul><button class="btn full" data-plan="VIP">Выбрать VIP</button></div>
+<div class="heading-row"><div><h1 class="heading">История</h1><p class="subheading">Журнал анализа и виртуальных сделок</p></div></div>
+<div class="grid">
+<div class="card"><div class="stat-label">Записи анализа</div><div class="stat-value" id="historySignalCount">0</div></div>
+<div class="card"><div class="stat-label">Закрытые сделки</div><div class="stat-value" id="paperClosedCount">0</div></div>
 </div>
-<p class="notice">Информация предназначена для аналитики и обучения. Это не финансовая рекомендация. Криптоактивы волатильны, возможна потеря капитала.</p>
+
+<h2 class="section-title">Paper trading</h2>
+<div class="card">
+<p class="stat-foot">Тренируйся без реальных денег. Виртуальные сделки не отправляются на биржу.</p>
+<div class="grid" style="margin-top:12px">
+<div><label class="stat-label" for="paperSymbol">Актив</label><select id="paperSymbol" style="margin-top:8px"><option value="BTCUSDT">BTC / USDT</option><option value="ETHUSDT">ETH / USDT</option><option value="SOLUSDT">SOL / USDT</option></select></div>
+<div><label class="stat-label" for="paperSide">Направление</label><select id="paperSide" style="margin-top:8px"><option value="LONG">LONG</option><option value="SHORT">SHORT</option></select></div>
+<div><label class="stat-label" for="paperSize">Размер позиции (USDT)</label><input id="paperSize" type="number" min="1" value="100" style="margin-top:8px"></div>
+<div><label class="stat-label" for="paperEntry">Цена входа (необязательно)</label><input id="paperEntry" type="number" min="0" step="any" placeholder="Текущая цена" style="margin-top:8px"></div>
+</div>
+<button class="btn primary full" id="openPaperTradeBtn" style="margin-top:13px">＋ Открыть виртуальную сделку</button>
+<div id="openPaperTrades" class="list" style="margin-top:12px"></div>
+</div>
+
+<div class="grid" style="margin-top:12px">
+<div class="card"><div class="stat-label">Суммарный PnL</div><div class="stat-value" id="paperTotalPnl">0.00 USDT</div></div>
+<div class="card"><div class="stat-label">Доля прибыльных</div><div class="stat-value" id="paperWinRate">—</div></div>
+</div>
+
+<h2 class="section-title">Закрытые виртуальные сделки</h2>
+<div id="paperHistoryList" class="list"></div>
+<h2 class="section-title">История анализа</h2>
+<div id="historySignals" class="list"></div>
+<h2 class="section-title">События рынка</h2>
+<div id="historyEvents" class="list"></div>
+<div class="actions"><button class="btn" id="clearHistoryBtn">Очистить историю анализа</button><button class="btn" id="clearPaperBtn">Очистить paper trading</button><button class="btn" id="historyExportBtn">Экспорт истории</button></div>
 </section>
+
+<section class="page" id="page-risk">
+<div class="heading-row"><div><h1 class="heading">Risk manager</h1><p class="subheading">Размер позиции и риск на сделку</p></div></div>
+<div class="card">
+<div class="grid">
+<div><label class="stat-label" for="riskSymbol">Актив</label><select id="riskSymbol" style="margin-top:8px"><option value="BTCUSDT">BTC / USDT</option><option value="ETHUSDT">ETH / USDT</option><option value="SOLUSDT">SOL / USDT</option></select></div>
+<div><label class="stat-label" for="riskBalance">Баланс (USDT)</label><input id="riskBalance" type="number" min="0" value="1000" style="margin-top:8px"></div>
+<div><label class="stat-label" for="riskPercent">Риск (%)</label><input id="riskPercent" type="number" min="0.1" max="10" step="0.1" value="1" style="margin-top:8px"></div>
+<div><label class="stat-label" for="riskEntry">Цена входа</label><input id="riskEntry" type="number" min="0" step="any" placeholder="Авто из рынка" style="margin-top:8px"></div>
+<div><label class="stat-label" for="riskStop">Stop Loss</label><input id="riskStop" type="number" min="0" step="any" placeholder="Цена стопа" style="margin-top:8px"></div>
+</div>
+<div class="utility-row"><button class="btn primary" id="calcRiskBtn">Рассчитать позицию</button><button class="btn" id="useSignalBtn">Использовать сигнал</button></div>
+<div id="riskResult" style="margin-top:14px"></div>
+</div>
+</section>
+
 <section class="page" id="page-profile">
-<div class="heading-row"><div><h1 class="heading">Профиль</h1><p class="subheading">Твой центр управления CRYPTO MONACO</p></div></div>
+<div class="heading-row"><div><h1 class="heading">Профиль</h1><p class="subheading">Настройки терминала и локальные данные</p></div></div>
 <div class="card">
-  <div class="profile-header">
-    <div class="profile-avatar" id="profileAvatar">M</div>
-    <div><div class="profile-name" id="profileName">Monaco Member</div><div class="profile-id" id="profileId">Локальный профиль</div></div>
-  </div>
-  <div class="divider"></div>
-  <div class="grid">
-    <div class="mini-metric"><span>Текущий тариф</span><strong id="profilePlan">FREE</strong></div>
-    <div class="mini-metric"><span>Снимки анализа</span><strong id="profileSnapshots">0</strong></div>
-  </div>
-  <div class="divider"></div>
-  <label class="stat-label" for="displayName">Имя профиля</label>
-  <input id="displayName" maxlength="40" placeholder="Введи имя" style="margin-top:8px">
-  <button class="btn primary full" id="saveProfileBtn" style="margin-top:12px">Сохранить профиль</button>
+<div class="profile-header"><div class="profile-avatar" id="profileAvatar">M</div><div><div class="profile-name" id="profileName">Monaco Trader</div><div class="profile-id" id="profileId">Локальный профиль</div></div></div>
+<div class="divider"></div>
+<label class="stat-label" for="displayName">Имя пользователя</label>
+<input id="displayName" type="text" maxlength="50" placeholder="Monaco Trader" style="margin-top:8px">
+<button class="btn primary full" id="saveProfileBtn" style="margin-top:12px">Сохранить профиль</button>
+<div class="divider"></div>
+<div class="list-row"><div><div class="list-row-title">Источник цен</div><div class="list-row-sub">Публичный API Binance</div></div><span class="pill">API</span></div>
+<div class="list-row" style="margin-top:9px"><div><div class="list-row-title">Хранение</div><div class="list-row-sub">Данные в браузере этого устройства</div></div><span class="pill">LOCAL</span></div>
 </div>
-<h2 class="section-title">Настройки</h2>
-<div class="card">
-  <div class="list-row"><div><div class="list-row-title">Автообновление рынка</div><div class="list-row-sub">Обновлять данные автоматически</div></div><input id="autoRefreshToggle" type="checkbox" checked style="width:22px;height:22px;accent-color:#28f0a0"></div>
-  <div class="divider"></div>
-  <div class="list-row"><div><div class="list-row-title">Интервал обновления</div><div class="list-row-sub">Частота запросов к API</div></div><select id="refreshInterval" style="width:115px"><option value="15000">15 сек.</option><option value="30000" selected>30 сек.</option><option value="60000">60 сек.</option></select></div>
-  <div class="divider"></div>
-  <button class="btn full" id="clearLocalBtn">Сбросить локальные данные</button>
+<h2 class="section-title">Подписки</h2>
+<div class="plan-grid">
+<div class="plan"><h3>PRO</h3><div class="plan-price">€15<small> / месяц</small></div><ul><li>Расширенная аналитика</li><li>Ценовые уведомления</li><li>История сигналов</li></ul><button class="btn full" data-plan="PRO">Выбрать PRO</button></div>
+<div class="plan featured"><span class="badge-feature">POPULAR</span><h3>ELITE</h3><div class="plan-price">€30<small> / месяц</small></div><ul><li>Все функции PRO</li><li>Сравнение сценариев</li><li>Дополнительная аналитика</li></ul><button class="btn primary full" data-plan="ELITE">Выбрать ELITE</button></div>
+<div class="plan"><h3>VIP</h3><div class="plan-price">€50<small> / месяц</small></div><ul><li>Все функции ELITE</li><li>Расширенные инструменты</li><li>Приоритетные обновления</li></ul><button class="btn full" data-plan="VIP">Выбрать VIP</button></div>
 </div>
-<p class="notice">Настройки и история хранятся в браузере этого устройства. Очистка данных браузера может удалить локальные записи.</p>
+<p class="notice">Выбор тарифа не активирует оплату автоматически. Для приёма платежей необходима отдельная интеграция.</p>
+<div class="actions"><button class="btn" id="clearLocalBtn">Сбросить локальные данные</button></div>
 </section>
 </main>
 
 <nav class="tabs">
 <button class="navbtn active" data-page="home"><span class="navicon">⌂</span><span>Главная</span></button>
-<button class="navbtn" data-page="market"><span class="navicon">⌁</span><span>Рынок</span></button>
-<button class="navbtn" data-page="signals"><span class="navicon">↗</span><span>Сигналы</span></button>
+<button class="navbtn" data-page="market"><span class="navicon">▥</span><span>Рынок</span></button>
+<button class="navbtn" data-page="signals"><span class="navicon">⌁</span><span>Сигналы</span></button>
 <button class="navbtn" data-page="history"><span class="navicon">◷</span><span>История</span></button>
-<button class="navbtn" data-page="plans"><span class="navicon">◇</span><span>Тарифы</span></button>
+<button class="navbtn" data-page="risk"><span class="navicon">◇</span><span>Риск</span></button>
 <button class="navbtn" data-page="profile"><span class="navicon">◎</span><span>Профиль</span></button>
 </nav>
 <div class="toast" id="toast"></div>
-
 <script>
-"use strict";
+  "use strict";
 
 const CONFIG = {
   apiBase: "https://api.binance.com",
@@ -130,6 +155,7 @@ const CONFIG = {
 };
 
 const $ = id => document.getElementById(id);
+
 const state = {
   prices: {},
   tickers: {},
@@ -144,32 +170,48 @@ const state = {
   timer: null,
   interval: CONFIG.defaultInterval,
   activePage: "home",
-  profile: {name: "Monaco Member", plan: "FREE"},
-  telegram: null
+  profile: {name: "Monaco Trader", plan: "FREE"},
+  telegram: null,
+  charts: {},
+  priceAlerts: [],
+  paperOpen: [],
+  paperClosed: {}
+    ? []
+    : [],
+  previousPrices: {}
 };
 
-try {
-  state.history = JSON.parse(localStorage.getItem("cm_history") || "[]");
-  state.profile = {...state.profile, ...JSON.parse(localStorage.getItem("cm_profile") || "{}")};
-} catch (e) {
-  state.history = [];
+function loadStoredData(key, fallback) {
+  try {
+    const value = localStorage.getItem(key);
+    return value === null ? fallback : JSON.parse(value);
+  } catch (error) {
+    return fallback;
+  }
 }
 
+state.history = loadStoredData("cm_history", []);
+state.profile = {
+  ...state.profile,
+  ...loadStoredData("cm_profile", {})
+};
+state.priceAlerts = loadStoredData("cm_price_alerts", []);
+state.paperOpen = loadStoredData("cm_paper_open", []);
+state.paperClosed = loadStoredData("cm_paper_closed", []);
+
 function saveHistory() {
-  try {
-    state.history = state.history.slice(-CONFIG.historyLimit);
-    localStorage.setItem("cm_history", JSON.stringify(state.history));
-  } catch (e) {
-    console.warn("History storage unavailable", e);
-  }
+  state.history = state.history.slice(-CONFIG.historyLimit);
+  localStorage.setItem("cm_history", JSON.stringify(state.history));
 }
 
 function saveProfileData() {
-  try {
-    localStorage.setItem("cm_profile", JSON.stringify(state.profile));
-  } catch (e) {
-    console.warn("Profile storage unavailable", e);
-  }
+  localStorage.setItem("cm_profile", JSON.stringify(state.profile));
+}
+
+function saveTradingTools() {
+  localStorage.setItem("cm_price_alerts", JSON.stringify(state.priceAlerts));
+  localStorage.setItem("cm_paper_open", JSON.stringify(state.paperOpen));
+  localStorage.setItem("cm_paper_closed", JSON.stringify(state.paperClosed));
 }
 
 function toast(message) {
@@ -206,7 +248,8 @@ function fmtPercent(value) {
 
 function fmtTime(value = Date.now()) {
   return new Date(value).toLocaleTimeString("ru-RU", {
-    hour: "2-digit", minute: "2-digit", second: "2-digit"
+    hour: "2-digit",
+    minute: "2-digit"
   });
 }
 
@@ -227,111 +270,156 @@ function setHtml(id, value) {
 
 function escapeHtml(value) {
   return String(value ?? "").replace(/[&<>"']/g, ch => ({
-    "&": "&amp;", "<": "&lt;", ">": "&gt;",
-    '"': "&quot;", "'": "&#39;"
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
   })[ch]);
 }
 
-async function apiFetch(path, options = {}) {
+async function apiFetch(path) {
   let lastError;
+
   for (const base of CONFIG.fallbackApis) {
     try {
-      const response = await fetch(base + path, {
-        ...options,
-        cache: "no-store"
-      });
+      const response = await fetch(base + path, {cache: "no-store"});
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       return await response.json();
     } catch (error) {
       lastError = error;
     }
   }
+
   throw lastError || new Error("API недоступен");
 }
 
 function setConnection(online, message) {
   const dot = $("statusDot");
-  if (dot) dot.style.background = online ? "var(--green)" : "var(--red)";
+  if (dot) {
+    dot.style.background = online
+      ? "var(--green)"
+      : "var(--red)";
+  }
+
   setText("connectionText", message);
   setText("apiState", online ? "ONLINE" : "OFFLINE");
-  setText("apiHint", online ? "Данные API получены" : "Проверь подключение к интернету");
+  setText(
+    "apiHint",
+    online ? "Данные рынка получены" : "Проверь подключение"
+  );
 }
 
 function symbolLabel(symbol) {
-  return symbol === "ETHUSDT" ? "Ethereum" : "Solana";
+  return ({
+    BTCUSDT: "Bitcoin",
+    ETHUSDT: "Ethereum",
+    SOLUSDT: "Solana"
+  })[symbol] || symbol;
 }
 
 function coinShort(symbol) {
-  return symbol === "ETHUSDT" ? "ETH" : "SOL";
-}
-
-function pctClass(value) {
-  return Number(value) >= 0 ? "positive" : "negative";
+  return ({
+    BTCUSDT: "BTC",
+    ETHUSDT: "ETH",
+    SOLUSDT: "SOL"
+  })[symbol] || symbol;
 }
 
 function getPrice(symbol) {
-  return safeNumber(state.prices[symbol], 0);
+  return safeNumber(state.prices[symbol]);
 }
 
 function getChange(symbol) {
-  return safeNumber(state.tickers[symbol]?.priceChangePercent, 0);
+  return safeNumber(state.tickers[symbol]?.priceChangePercent);
 }
 
 function calcEMA(values, period) {
   if (!values.length) return [];
-  const k = 2 / (period + 1);
+
+  const multiplier = 2 / (period + 1);
   let ema = values[0];
-  const out = [ema];
+  const output = [ema];
+
   for (let i = 1; i < values.length; i++) {
-    ema = values[i] * k + ema * (1 - k);
-    out.push(ema);
+    ema = values[i] * multiplier + ema * (1 - multiplier);
+    output.push(ema);
   }
-  return out;
+
+  return output;
 }
 
 function calcRSI(values, period = 14) {
   if (values.length <= period) return 50;
-  let gains = 0, losses = 0;
+
+  let gains = 0;
+  let losses = 0;
+
   for (let i = values.length - period; i < values.length; i++) {
     const change = values[i] - values[i - 1];
+
     if (change > 0) gains += change;
     else losses -= change;
   }
+
   if (losses === 0) return 100;
+
   const rs = gains / losses;
   return 100 - 100 / (1 + rs);
 }
 
 function calcATR(candles, period = 14) {
   if (candles.length < 2) return 0;
+
   const ranges = [];
+
   for (let i = 1; i < candles.length; i++) {
-    const c = candles[i], prev = candles[i - 1];
+    const candle = candles[i];
+    const previous = candles[i - 1];
+
     ranges.push(Math.max(
-      c.high - c.low,
-      Math.abs(c.high - prev.close),
-      Math.abs(c.low - prev.close)
+      candle.high - candle.low,
+      Math.abs(candle.high - previous.close),
+      Math.abs(candle.low - previous.close)
     ));
   }
+
   const recent = ranges.slice(-period);
-  return recent.length ? recent.reduce((a, b) => a + b, 0) / recent.length : 0;
+
+  return recent.length
+    ? recent.reduce((sum, value) => sum + value, 0) / recent.length
+    : 0;
 }
 
 function analyzeCandles(candles) {
   if (!candles || candles.length < 30) {
-    return {direction: "WAIT", score: 0, rsi: 50, emaFast: 0, emaSlow: 0, atr: 0};
+    return {
+      direction: "WAIT",
+      score: 0,
+      rsi: 50,
+      emaFast: 0,
+      emaSlow: 0,
+      atr: 0
+    };
   }
-  const closes = candles.map(c => c.close);
+
+  const closes = candles.map(candle => candle.close);
   const fast = calcEMA(closes, 7);
   const slow = calcEMA(closes, 25);
   const rsi = calcRSI(closes, 14);
   const last = closes[closes.length - 1];
-  const score = (fast.at(-1) > slow.at(-1) ? 1 : -1) +
-    (rsi >= 50 && rsi <= 70 ? 1 : rsi < 50 && rsi >= 30 ? -1 : 0) +
-    (last > fast.at(-1) ? 1 : -1);
+
+  let score = 0;
+  score += fast[fast.length - 1] > slow[slow.length - 1] ? 1 : -1;
+  score += rsi >= 50 && rsi <= 70 ? 1 : rsi < 50 && rsi >= 30 ? -1 : 0;
+  score += last > fast[fast.length - 1] ? 1 : -1;
+
   return {
     direction: score >= 2 ? "LONG" : score <= -2 ? "SHORT" : "WAIT",
-    score, rsi, emaFast: fast.at(-1), emaSlow: slow.at(-1),
+    score,
+    rsi,
+    emaFast: fast[fast.length - 1],
+    emaSlow: slow[slow.length - 1],
     atr: calcATR(candles)
   };
 }
@@ -341,66 +429,74 @@ function signalFor(symbol) {
   const analysis = analyzeCandles(candles);
   const price = getPrice(symbol);
   const atr = analysis.atr || price * 0.008;
+
   let direction = analysis.direction;
-  if (!price || !candles.length) direction = "WAIT";
-  const entry = price;
-  const stop = direction === "LONG" ? entry - atr * 1.5 :
-    direction === "SHORT" ? entry + atr * 1.5 : entry;
-  const target = direction === "LONG" ? entry + atr * 2.5 :
-    direction === "SHORT" ? entry - atr * 2.5 : entry;
+  if (!price || candles.length < 30) direction = "WAIT";
+
+  const stop = direction === "LONG"
+    ? price - atr * 1.5
+    : direction === "SHORT"
+      ? price + atr * 1.5
+      : price;
+
+  const target = direction === "LONG"
+    ? price + atr * 2.5
+    : direction === "SHORT"
+      ? price - atr * 2.5
+      : price;
+
   return {
-    symbol, direction, score: analysis.score, rsi: analysis.rsi,
-    entry, stop, target, atr, updatedAt: Date.now(),
+    symbol,
+    direction,
+    score: analysis.score,
+    rsi: analysis.rsi,
+    entry: price,
+    stop,
+    target,
+    atr,
+    updatedAt: Date.now(),
     note: direction === "WAIT"
       ? "Направление не подтверждено. Дождись более ясной структуры."
-      : `EMA 7/25, RSI ${analysis.rsi.toFixed(1)} и динамика цены формируют ${direction} сценарий.`
+      : `EMA 7/25 и RSI ${analysis.rsi.toFixed(1)} формируют сценарий ${direction}.`
   };
 }
- async function loadMarket() {
+
+async function loadMarket() {
   if (state.loading) return;
   state.loading = true;
 
   try {
-    const symbols = ["ETHUSDT", "SOLUSDT"];
+    const symbols = ["BTCUSDT", "ETHUSDT", "SOLUSDT"];
 
-    const tickerResults = await Promise.all(
-      symbols.map(async symbol => {
-        const data = await apiFetch(
-          `/api/v3/ticker/24hr?symbol=${symbol}`
-        );
-        return [symbol, data];
-      })
-    );
+    await Promise.all(symbols.map(async symbol => {
+      const ticker = await apiFetch(
+        `/api/v3/ticker/24hr?symbol=${symbol}`
+      );
 
-    tickerResults.forEach(([symbol, ticker]) => {
       state.tickers[symbol] = ticker;
       state.prices[symbol] = Number(ticker.lastPrice);
-    });
+    }));
 
     state.lastUpdated = Date.now();
     setConnection(true, "LIVE");
     setText("lastUpdated", fmtTime(state.lastUpdated));
 
     await Promise.all(symbols.map(async symbol => {
-      try {
-        const candles = await apiFetch(
-          `/api/v3/klines?symbol=${symbol}&interval=15m&limit=100`
-        );
+      const raw = await apiFetch(
+        `/api/v3/klines?symbol=${symbol}&interval=15m&limit=100`
+      );
 
-        state.klines[symbol] = state.klines[symbol] || {};
-        state.klines[symbol]["15m"] = candles.map(k => ({
-          time: Number(k[0]),
-          open: Number(k[1]),
-          high: Number(k[2]),
-          low: Number(k[3]),
-          close: Number(k[4]),
-          volume: Number(k[5])
-        }));
+      state.klines[symbol] = state.klines[symbol] || {};
+      state.klines[symbol]["15m"] = raw.map(k => ({
+        time: Number(k[0]),
+        open: Number(k[1]),
+        high: Number(k[2]),
+        low: Number(k[3]),
+        close: Number(k[4]),
+        volume: Number(k[5])
+      }));
 
-        state.signals[symbol] = signalFor(symbol);
-      } catch (error) {
-        console.warn("15m candles failed", symbol, error);
-      }
+      state.signals[symbol] = signalFor(symbol);
     }));
 
     await Promise.all([
@@ -409,19 +505,19 @@ function signalFor(symbol) {
       loadMarketEvents()
     ]);
 
+    checkPriceAlerts();
     renderAll();
   } catch (error) {
     console.error("Market update failed:", error);
     setConnection(false, "API недоступен");
-    toast("Не удалось загрузить рынок. Проверь подключение.");
-    renderAll();
+    toast("Не удалось загрузить рынок. Проверь интернет.");
   } finally {
     state.loading = false;
   }
 }
 
 async function loadMultiTimeframe() {
-  const symbols = ["ETHUSDT", "SOLUSDT"];
+  const symbols = ["BTCUSDT", "ETHUSDT", "SOLUSDT"];
   const intervals = ["5m", "15m", "1h", "4h"];
 
   await Promise.all(symbols.map(async symbol => {
@@ -442,9 +538,7 @@ async function loadMultiTimeframe() {
           volume: Number(k[5])
         }));
 
-        state.klines[symbol] = state.klines[symbol] || {};
         state.klines[symbol][interval] = candles;
-
         const analysis = analyzeCandles(candles);
 
         state.multiTimeframe[symbol][interval] = {
@@ -466,7 +560,7 @@ async function loadMultiTimeframe() {
 }
 
 async function loadOrderBooks() {
-  const symbols = ["ETHUSDT", "SOLUSDT"];
+  const symbols = ["BTCUSDT", "ETHUSDT", "SOLUSDT"];
 
   await Promise.all(symbols.map(async symbol => {
     try {
@@ -495,7 +589,7 @@ async function loadOrderBooks() {
         asks,
         bidValue,
         askValue,
-        imbalance: total > 0 ? (bidValue - askValue) / total * 100 : 0,
+        imbalance: total ? (bidValue - askValue) / total * 100 : 0,
         updatedAt: Date.now()
       };
     } catch (error) {
@@ -505,7 +599,7 @@ async function loadOrderBooks() {
 }
 
 async function loadMarketEvents() {
-  const symbols = ["ETHUSDT", "SOLUSDT"];
+  const symbols = ["BTCUSDT", "ETHUSDT", "SOLUSDT"];
 
   await Promise.all(symbols.map(async symbol => {
     try {
@@ -527,12 +621,12 @@ async function loadMarketEvents() {
       if (candles.length >= 22) {
         const last = candles[candles.length - 1];
         const previous = candles.slice(-21, -1);
-        const averageVolume =
-          previous.reduce((sum, candle) => sum + candle.volume, 0) /
-          previous.length;
+        const averageVolume = previous.reduce(
+          (sum, candle) => sum + candle.volume, 0
+        ) / previous.length;
 
-        const highest = Math.max(...previous.map(c => c.high));
-        const lowest = Math.min(...previous.map(c => c.low));
+        const highest = Math.max(...previous.map(candle => candle.high));
+        const lowest = Math.min(...previous.map(candle => candle.low));
         const rangePercent = last.open > 0
           ? (last.high - last.low) / last.open * 100
           : 0;
@@ -541,7 +635,7 @@ async function loadMarketEvents() {
           events.push({
             type: "volume",
             title: "Всплеск объёма",
-            description: `Объём последней 5-минутной свечи выше среднего в ${(last.volume / averageVolume).toFixed(1)} раза.`
+            description: `Объём выше среднего в ${(last.volume / averageVolume).toFixed(1)} раза.`
           });
         }
 
@@ -549,7 +643,7 @@ async function loadMarketEvents() {
           events.push({
             type: "breakout",
             title: "Пробой вверх",
-            description: "Закрытие последней свечи выше максимума предыдущих 20 свечей."
+            description: "Цена закрытия выше максимума предыдущих 20 свечей."
           });
         }
 
@@ -557,7 +651,7 @@ async function loadMarketEvents() {
           events.push({
             type: "breakdown",
             title: "Пробой вниз",
-            description: "Закрытие последней свечи ниже минимума предыдущих 20 свечей."
+            description: "Цена закрытия ниже минимума предыдущих 20 свечей."
           });
         }
 
@@ -565,7 +659,7 @@ async function loadMarketEvents() {
           events.push({
             type: "volatility",
             title: "Высокая волатильность",
-            description: `Диапазон свечи составляет ${rangePercent.toFixed(2)}% от цены открытия.`
+            description: `Диапазон свечи: ${rangePercent.toFixed(2)}%.`
           });
         }
       }
@@ -576,8 +670,7 @@ async function loadMarketEvents() {
     }
   }));
 }
-
-function renderAssetCard(symbol, compact = false) {
+  function renderAssetCard(symbol, compact = false) {
   const price = getPrice(symbol);
   const change = getChange(symbol);
   const signal = state.signals[symbol] || signalFor(symbol);
@@ -589,7 +682,7 @@ function renderAssetCard(symbol, compact = false) {
     <div class="card asset-card">
       <div class="asset-top">
         <div class="coin-title">
-          <div class="coin-icon">${short === "ETH" ? "Ξ" : "◎"}</div>
+          <div class="coin-icon">${short === "BTC" ? "₿" : short === "ETH" ? "Ξ" : "◎"}</div>
           <div>
             <div class="coin-name">${name}</div>
             <div class="coin-pair">${short} / USDT</div>
@@ -597,28 +690,21 @@ function renderAssetCard(symbol, compact = false) {
         </div>
         <span class="live">● LIVE</span>
       </div>
-
       <div class="price-row">
         <div>
           <div class="price">$${fmtPrice(price)}</div>
-          <div class="change ${pctClass(change)}">${fmtPercent(change)} за 24ч</div>
+          <div class="change ${change >= 0 ? "positive" : "negative"}">${fmtPercent(change)} за 24ч</div>
         </div>
-        <div class="volume">
-          Объём за 24ч
-          <strong>$${fmtCompact(ticker.quoteVolume)}</strong>
-        </div>
+        <div class="volume">Объём за 24ч<strong>$${fmtCompact(ticker.quoteVolume)}</strong></div>
       </div>
-
       ${compact ? "" : `
+        <div class="chart-box">
+          <div class="chart-title">${short} / USDT · свечи 15м</div>
+          <div class="chart" id="chart-${symbol}"></div>
+        </div>
         <div class="mini-grid">
-          <div class="mini-metric">
-            <span>RSI (14)</span>
-            <strong>${Number.isFinite(signal.rsi) ? signal.rsi.toFixed(1) : "—"}</strong>
-          </div>
-          <div class="mini-metric">
-            <span>Сценарий</span>
-            <strong class="${signal.direction === "LONG" ? "positive" : signal.direction === "SHORT" ? "negative" : "neutral"}">${signal.direction}</strong>
-          </div>
+          <div class="mini-metric"><span>RSI (14)</span><strong>${Number(signal.rsi).toFixed(1)}</strong></div>
+          <div class="mini-metric"><span>Сценарий</span><strong class="${signal.direction === "LONG" ? "positive" : signal.direction === "SHORT" ? "negative" : "neutral"}">${signal.direction}</strong></div>
         </div>
       `}
     </div>
@@ -628,9 +714,7 @@ function renderAssetCard(symbol, compact = false) {
 function renderSignalCard(symbol) {
   const signal = state.signals[symbol] || signalFor(symbol);
   const direction = signal.direction;
-  const tagClass = direction === "LONG"
-    ? "long"
-    : direction === "SHORT" ? "short" : "wait";
+  const tagClass = direction === "LONG" ? "long" : direction === "SHORT" ? "short" : "wait";
 
   return `
     <div class="card signal-card">
@@ -641,30 +725,19 @@ function renderSignalCard(symbol) {
         </div>
         <span class="signal-tag ${tagClass}">${direction}</span>
       </div>
-
       <div class="signal-desc">${escapeHtml(signal.note)}</div>
-
       <div class="levels">
-        <div class="level">
-          <span>ВХОД</span>
-          <strong>$${fmtPrice(signal.entry)}</strong>
-        </div>
-        <div class="level">
-          <span>STOP LOSS</span>
-          <strong>$${fmtPrice(signal.stop)}</strong>
-        </div>
-        <div class="level">
-          <span>TAKE PROFIT</span>
-          <strong>$${fmtPrice(signal.target)}</strong>
-        </div>
+        <div class="level"><span>ВХОД</span><strong>$${fmtPrice(signal.entry)}</strong></div>
+        <div class="level"><span>STOP LOSS</span><strong>$${fmtPrice(signal.stop)}</strong></div>
+        <div class="level"><span>TAKE PROFIT</span><strong>$${fmtPrice(signal.target)}</strong></div>
       </div>
-
       <div class="divider"></div>
       <div class="stat-foot">RSI: ${Number(signal.rsi).toFixed(1)} · Обновлено: ${fmtTime(signal.updatedAt)}</div>
     </div>
   `;
 }
- function renderMultiTimeframe() {
+
+function renderMultiTimeframe() {
   const intervals = [
     ["5m", "5 минут"],
     ["15m", "15 минут"],
@@ -672,15 +745,12 @@ function renderSignalCard(symbol) {
     ["4h", "4 часа"]
   ];
 
-  const html = ["ETHUSDT", "SOLUSDT"].map(symbol => {
+  const html = ["BTCUSDT", "ETHUSDT", "SOLUSDT"].map(symbol => {
     const data = state.multiTimeframe[symbol] || {};
-
     const cells = intervals.map(([key, label]) => {
       const item = data[key];
       const direction = item?.direction || "WAIT";
-      const cls = direction === "LONG"
-        ? "positive"
-        : direction === "SHORT" ? "negative" : "neutral";
+      const cls = direction === "LONG" ? "positive" : direction === "SHORT" ? "negative" : "neutral";
 
       return `
         <div class="mini-metric">
@@ -691,28 +761,18 @@ function renderSignalCard(symbol) {
       `;
     }).join("");
 
-    const values = intervals
-      .map(([key]) => data[key]?.direction)
+    const values = intervals.map(([key]) => data[key]?.direction)
       .filter(direction => direction === "LONG" || direction === "SHORT");
-
-    const longCount = values.filter(v => v === "LONG").length;
-    const shortCount = values.filter(v => v === "SHORT").length;
-
-    const consensus = longCount >= 3
-      ? "Преимущество LONG"
-      : shortCount >= 3
-        ? "Преимущество SHORT"
-        : "Нет единого направления";
+    const longs = values.filter(value => value === "LONG").length;
+    const shorts = values.filter(value => value === "SHORT").length;
+    const consensus = longs >= 3 ? "Преимущество LONG" : shorts >= 3 ? "Преимущество SHORT" : "Нет единого направления";
 
     return `
       <div class="card">
-        <div class="asset-top">
-          <strong>${coinShort(symbol)} / USDT</strong>
-          <span class="pill">${values.length}/4</span>
-        </div>
+        <div class="asset-top"><strong>${coinShort(symbol)} / USDT</strong><span class="pill">${values.length}/4</span></div>
         <h3 style="font-size:15px;margin:15px 0">${consensus}</h3>
         <div class="mini-grid">${cells}</div>
-        <p class="stat-foot">Подтверждение направления на разных таймфреймах не гарантирует прибыль.</p>
+        <p class="stat-foot">Совпадение таймфреймов не гарантирует прибыль.</p>
       </div>
     `;
   }).join("");
@@ -721,49 +781,28 @@ function renderSignalCard(symbol) {
 }
 
 function renderOrderBooks() {
-  const html = ["ETHUSDT", "SOLUSDT"].map(symbol => {
+  const html = ["BTCUSDT", "ETHUSDT", "SOLUSDT"].map(symbol => {
     const book = state.orderBook[symbol];
 
     if (!book || book.error) {
-      return `
-        <div class="card">
-          <strong>${coinShort(symbol)} / USDT</strong>
-          <p class="stat-foot">Стакан временно недоступен.</p>
-        </div>
-      `;
+      return `<div class="card"><strong>${coinShort(symbol)} / USDT</strong><p class="stat-foot">Стакан временно недоступен.</p></div>`;
     }
 
     const imbalance = book.imbalance;
-    const cls = imbalance > 5
-      ? "positive"
-      : imbalance < -5 ? "negative" : "neutral";
-
-    const interpretation = imbalance > 5
-      ? "Больше заявок на покупку"
-      : imbalance < -5
-        ? "Больше заявок на продажу"
-        : "Баланс заявок относительно нейтрален";
+    const cls = imbalance > 5 ? "positive" : imbalance < -5 ? "negative" : "neutral";
+    const interpretation = imbalance > 5 ? "Больше заявок на покупку" : imbalance < -5 ? "Больше заявок на продажу" : "Баланс заявок относительно нейтрален";
 
     return `
       <div class="card">
-        <div class="asset-top">
-          <strong>${coinShort(symbol)} / USDT</strong>
-          <span class="pill">TOP 20</span>
-        </div>
+        <div class="asset-top"><strong>${coinShort(symbol)} / USDT</strong><span class="pill">TOP 20</span></div>
         <div class="stat-label" style="margin-top:18px">Дисбаланс стакана</div>
         <div class="stat-value ${cls}">${imbalance > 0 ? "+" : ""}${imbalance.toFixed(2)}%</div>
         <div class="stat-foot">${interpretation}</div>
         <div class="mini-grid">
-          <div class="mini-metric">
-            <span>Сторона bid</span>
-            <strong class="positive">$${fmtCompact(book.bidValue)}</strong>
-          </div>
-          <div class="mini-metric">
-            <span>Сторона ask</span>
-            <strong class="negative">$${fmtCompact(book.askValue)}</strong>
-          </div>
+          <div class="mini-metric"><span>Покупки (bid)</span><strong class="positive">$${fmtCompact(book.bidValue)}</strong></div>
+          <div class="mini-metric"><span>Продажи (ask)</span><strong class="negative">$${fmtCompact(book.askValue)}</strong></div>
         </div>
-        <p class="chart-note">Снимок стакана может быстро измениться и не отражает все заявки рынка.</p>
+        <p class="chart-note">Снимок стакана быстро меняется и не гарантирует движение цены.</p>
       </div>
     `;
   }).join("");
@@ -774,35 +813,22 @@ function renderOrderBooks() {
 function renderEvents() {
   const events = [];
 
-  ["ETHUSDT", "SOLUSDT"].forEach(symbol => {
-    (state.events[symbol] || []).forEach(event => {
-      events.push({...event, symbol});
-    });
+  ["BTCUSDT", "ETHUSDT", "SOLUSDT"].forEach(symbol => {
+    (state.events[symbol] || []).forEach(event => events.push({...event, symbol}));
   });
 
   if (!events.length) {
-    setHtml("eventPanel", `
-      <div class="empty">
-        Значимых событий по текущим условиям не обнаружено
-        либо данные ещё загружаются.
-      </div>
-    `);
+    setHtml("eventPanel", '<div class="empty">Значимых событий пока нет либо данные загружаются.</div>');
     return;
   }
 
   setHtml("eventPanel", events.map(event => {
-    const cls = event.type === "breakdown"
-      ? "negative"
-      : event.type === "volume" || event.type === "breakout"
-        ? "positive"
-        : "neutral";
+    const cls = event.type === "breakdown" ? "negative" : event.type === "volume" || event.type === "breakout" ? "positive" : "neutral";
 
     return `
       <div class="list-row">
         <div>
-          <div class="list-row-title ${cls}">
-            ${escapeHtml(event.title)} · ${coinShort(event.symbol)}
-          </div>
+          <div class="list-row-title ${cls}">${escapeHtml(event.title)} · ${coinShort(event.symbol)}</div>
           <div class="list-row-sub">${escapeHtml(event.description)}</div>
         </div>
         <span class="pill">5M</span>
@@ -811,280 +837,367 @@ function renderEvents() {
   }).join(""));
 }
 
-function calculateRisk() {
-  const capital = safeNumber($("riskCapital")?.value);
-  const riskPct = safeNumber($("riskPct")?.value);
-  const entry = safeNumber($("riskEntry")?.value);
-  const stop = safeNumber($("riskStop")?.value);
-  const target = safeNumber($("riskTarget")?.value);
+function renderScenario() {
+  const symbols = ["ETHUSDT", "SOLUSDT"];
+  const ranked = symbols.map(symbol => state.signals[symbol] || signalFor(symbol))
+    .sort((a, b) => Math.abs(b.score) - Math.abs(a.score));
 
-  if (capital <= 0 || riskPct <= 0 || riskPct > 5 ||
-      entry <= 0 || stop <= 0 || entry === stop) {
-    setHtml("riskResult", `
-      <div class="empty">
-        Проверь депозит, риск, цену входа и стоп-лосс.
-        Риск должен быть больше 0 и не превышать 5%.
+  const strongest = ranked[0];
+  const agreement = ranked[0].direction === ranked[1].direction && ranked[0].direction !== "WAIT";
+
+  setHtml("scenarioPanel", `
+    <div class="scenario-card">
+      <div class="stat-label">ЛУЧШИЙ ТЕХНИЧЕСКИЙ СЦЕНАРИЙ</div>
+      <div class="scenario-title" style="margin-top:12px">${strongest.direction === "WAIT" ? "Ожидание подтверждения" : `${strongest.direction} · ${coinShort(strongest.symbol)}`}</div>
+      <div class="scenario-sub">${escapeHtml(strongest.note)}</div>
+      <div class="scenario-probs">
+        <div class="scenario-prob"><span>ETH</span><strong class="${ranked.find(s => s.symbol === "ETHUSDT").direction === "LONG" ? "positive" : ranked.find(s => s.symbol === "ETHUSDT").direction === "SHORT" ? "negative" : "neutral"}">${ranked.find(s => s.symbol === "ETHUSDT").direction}</strong></div>
+        <div class="scenario-prob"><span>SOL</span><strong class="${ranked.find(s => s.symbol === "SOLUSDT").direction === "LONG" ? "positive" : ranked.find(s => s.symbol === "SOLUSDT").direction === "SHORT" ? "negative" : "neutral"}">${ranked.find(s => s.symbol === "SOLUSDT").direction}</strong></div>
+        <div class="scenario-prob"><span>Согласие</span><strong>${agreement ? "ДА" : "НЕТ"}</strong></div>
       </div>
-    `);
+      <div class="stat-foot">Вход: $${fmtPrice(strongest.entry)} · Stop: $${fmtPrice(strongest.stop)} · Цель: $${fmtPrice(strongest.target)}</div>
+    </div>
+  `);
+}
+  function renderSignalsPage() {
+  const symbols = ["ETHUSDT", "SOLUSDT"];
+
+  setHtml("signalsPanel", symbols.map(renderSignalCard).join(""));
+
+  const ranked = symbols
+    .map(symbol => state.signals[symbol] || signalFor(symbol))
+    .sort((a, b) => Math.abs(b.score) - Math.abs(a.score));
+
+  setHtml("comparisonPanel", ranked.map(signal => `
+    <div class="card">
+      <div class="stat-label">${coinShort(signal.symbol)} / USDT</div>
+      <div class="stat-value ${signal.direction === "LONG" ? "positive" : signal.direction === "SHORT" ? "negative" : "neutral"}">${signal.direction}</div>
+      <div class="stat-foot">RSI ${Number(signal.rsi).toFixed(1)} · Оценка ${signal.score}</div>
+      <div class="divider"></div>
+      <div class="stat-foot">Вход: $${fmtPrice(signal.entry)}</div>
+      <div class="stat-foot">Stop: $${fmtPrice(signal.stop)}</div>
+      <div class="stat-foot">Target: $${fmtPrice(signal.target)}</div>
+    </div>
+  `).join(""));
+}
+
+function renderHistory() {
+  setText("historySignalCount", state.history.length);
+
+  setHtml("historySignals", state.history.slice().reverse().map(item => `
+    <div class="list-row">
+      <div>
+        <div class="list-row-title">${escapeHtml(item.title || item.symbol || "Запись")}</div>
+        <div class="list-row-sub">${escapeHtml(item.description || "")} · ${fmtTime(item.time || Date.now())}</div>
+      </div>
+      <span class="pill">${escapeHtml(item.type || "INFO")}</span>
+    </div>
+  `).join("") || '<div class="empty">История пока пуста.</div>');
+
+  const events = ["BTCUSDT", "ETHUSDT", "SOLUSDT"].flatMap(symbol =>
+    (state.events[symbol] || []).map(event => ({...event, symbol}))
+  );
+
+  setHtml("historyEvents", events.map(event => `
+    <div class="list-row">
+      <div>
+        <div class="list-row-title">${escapeHtml(event.title)} · ${coinShort(event.symbol)}</div>
+        <div class="list-row-sub">${escapeHtml(event.description)}</div>
+      </div>
+      <span class="pill">5M</span>
+    </div>
+  `).join("") || '<div class="empty">События пока не обнаружены.</div>');
+
+  setText("paperClosedCount", state.paperClosed.length);
+}
+
+function renderPriceAlerts() {
+  const list = $("priceAlertsList");
+  if (!list) return;
+
+  list.innerHTML = state.priceAlerts.length
+    ? state.priceAlerts.map(alert => `
+      <div class="list-row">
+        <div>
+          <div class="list-row-title">${coinShort(alert.symbol)} · ${alert.condition === "above" ? "выше" : "ниже"} $${fmtPrice(alert.price)}</div>
+          <div class="list-row-sub">${alert.triggered ? "Сработало" : "Ожидает условия"}</div>
+        </div>
+        <button class="btn small" data-remove-alert="${escapeHtml(alert.id)}">Удалить</button>
+      </div>
+    `).join("")
+    : '<div class="empty">Ценовых уведомлений пока нет.</div>';
+
+  setText("historyAlertCount", state.priceAlerts.length);
+}
+
+function addPriceAlert() {
+  const symbol = $("alertSymbol")?.value;
+  const condition = $("alertCondition")?.value;
+  const price = safeNumber($("alertPrice")?.value);
+
+  if (!symbol || !["BTCUSDT", "ETHUSDT", "SOLUSDT"].includes(symbol) ||
+      !["above", "below"].includes(condition) || price <= 0) {
+    toast("Укажи актив и корректный ценовой уровень.");
     return;
   }
 
-  const riskAmount = capital * riskPct / 100;
-  const distance = Math.abs(entry - stop);
-  const quantity = riskAmount / distance;
-  const notional = quantity * entry;
-  const riskDirection = entry > stop ? "LONG" : "SHORT";
+  state.priceAlerts.push({
+    id: String(Date.now()) + Math.random().toString(16).slice(2),
+    symbol,
+    condition,
+    price,
+    triggered: false,
+    createdAt: Date.now()
+  });
 
-  let rewardRisk = null;
-  if (target > 0) {
-    const reward = riskDirection === "LONG"
-      ? target - entry
-      : entry - target;
+  saveTradingTools();
+  renderPriceAlerts();
+  $("alertPrice").value = "";
+  toast("Ценовое уведомление создано.");
+}
 
-    if (reward > 0) rewardRisk = reward / distance;
+function checkPriceAlerts() {
+  let changed = false;
+
+  state.priceAlerts.forEach(alert => {
+    if (alert.triggered) return;
+
+    const price = getPrice(alert.symbol);
+    if (!price) return;
+
+    const hit = alert.condition === "above"
+      ? price >= alert.price
+      : price <= alert.price;
+
+    if (!hit) return;
+
+    alert.triggered = true;
+    changed = true;
+
+    const message = `${coinShort(alert.symbol)} достиг уровня $${fmtPrice(alert.price)}. Текущая цена: $${fmtPrice(price)}.`;
+    toast(message);
+
+    if ("Notification" in window && Notification.permission === "granted") {
+      try {
+        new Notification("CRYPTO MONACO", {body: message});
+      } catch (error) {
+        console.warn(error);
+      }
+    }
+
+    state.history.push({
+      type: "PRICE ALERT",
+      title: `Уровень ${coinShort(alert.symbol)} достигнут`,
+      description: message,
+      time: Date.now()
+    });
+  });
+
+  if (changed) {
+    saveTradingTools();
+    saveHistory();
+    renderPriceAlerts();
+    renderHistory();
+  }
+}
+
+async function enableBrowserNotifications() {
+  if (!("Notification" in window)) {
+    toast("Этот браузер не поддерживает уведомления.");
+    return;
   }
 
+  try {
+    const permission = await Notification.requestPermission();
+    toast(permission === "granted"
+      ? "Уведомления браузера включены."
+      : "Разрешение на уведомления не предоставлено.");
+  } catch (error) {
+    toast("Не удалось включить уведомления.");
+  }
+}
+
+function paperPnl(trade, currentPrice) {
+  if (!trade.entry || !currentPrice || !trade.size) return 0;
+
+  const move = trade.side === "LONG"
+    ? currentPrice - trade.entry
+    : trade.entry - currentPrice;
+
+  return move / trade.entry * trade.size;
+}
+
+function openPaperTrade() {
+  const symbol = $("paperSymbol")?.value;
+  const side = $("paperSide")?.value;
+  const size = safeNumber($("paperSize")?.value);
+  const manualEntry = safeNumber($("paperEntry")?.value);
+  const entry = manualEntry > 0 ? manualEntry : getPrice(symbol);
+
+  if (!["BTCUSDT", "ETHUSDT", "SOLUSDT"].includes(symbol) ||
+      !["LONG", "SHORT"].includes(side) || size <= 0 || entry <= 0) {
+    toast("Проверь актив, размер позиции и цену входа.");
+    return;
+  }
+
+  state.paperOpen.push({
+    id: String(Date.now()) + Math.random().toString(16).slice(2),
+    symbol,
+    side,
+    size,
+    entry,
+    openedAt: Date.now()
+  });
+
+  saveTradingTools();
+  renderPaperTrades();
+  $("paperEntry").value = "";
+  toast(`Виртуальная ${side} сделка по ${coinShort(symbol)} открыта.`);
+}
+
+function closePaperTrade(id) {
+  const index = state.paperOpen.findIndex(trade => trade.id === id);
+  if (index < 0) return;
+
+  const trade = state.paperOpen[index];
+  const exit = getPrice(trade.symbol);
+
+  if (exit <= 0) {
+    toast("Текущая цена недоступна.");
+    return;
+  }
+
+  state.paperClosed.push({
+    ...trade,
+    exit,
+    closedAt: Date.now(),
+    pnl: paperPnl(trade, exit)
+  });
+
+  state.paperOpen.splice(index, 1);
+  state.paperClosed = state.paperClosed.slice(-200);
+
+  saveTradingTools();
+  renderPaperTrades();
+  toast("Виртуальная сделка закрыта.");
+}
+
+function renderPaperTrades() {
+  const openList = $("openPaperTrades");
+  const historyList = $("paperHistoryList");
+  if (!openList || !historyList) return;
+
+  openList.innerHTML = state.paperOpen.length
+    ? state.paperOpen.map(trade => {
+      const current = getPrice(trade.symbol);
+      const pnl = paperPnl(trade, current);
+
+      return `
+        <div class="list-row">
+          <div>
+            <div class="list-row-title ${trade.side === "LONG" ? "positive" : "negative"}">${trade.side} · ${coinShort(trade.symbol)}</div>
+            <div class="list-row-sub">Вход $${fmtPrice(trade.entry)} · Сейчас $${fmtPrice(current)} · Размер $${fmtPrice(trade.size)}</div>
+            <div class="stat-foot ${pnl >= 0 ? "positive" : "negative"}">PnL: ${pnl >= 0 ? "+" : ""}${pnl.toFixed(2)} USDT</div>
+          </div>
+          <button class="btn small" data-close-paper="${escapeHtml(trade.id)}">Закрыть</button>
+        </div>
+      `;
+    }).join("")
+    : '<div class="empty">Нет открытых виртуальных сделок.</div>';
+
+  const totalPnl = state.paperClosed.reduce((sum, trade) => sum + safeNumber(trade.pnl), 0);
+  const wins = state.paperClosed.filter(trade => safeNumber(trade.pnl) > 0).length;
+  const winRate = state.paperClosed.length ? wins / state.paperClosed.length * 100 : null;
+
+  setText("paperTotalPnl", `${totalPnl >= 0 ? "+" : ""}${totalPnl.toFixed(2)} USDT`);
+  setText("paperWinRate", winRate === null ? "—" : `${winRate.toFixed(1)}%`);
+
+  const totalElement = $("paperTotalPnl");
+  if (totalElement) {
+    totalElement.className = `stat-value ${totalPnl >= 0 ? "positive" : "negative"}`;
+  }
+
+  historyList.innerHTML = state.paperClosed.length
+    ? state.paperClosed.slice().reverse().map(trade => `
+      <div class="list-row">
+        <div>
+          <div class="list-row-title ${trade.side === "LONG" ? "positive" : "negative"}">${trade.side} · ${coinShort(trade.symbol)}</div>
+          <div class="list-row-sub">Вход $${fmtPrice(trade.entry)} → выход $${fmtPrice(trade.exit)} · ${fmtTime(trade.closedAt)}</div>
+        </div>
+        <strong class="${trade.pnl >= 0 ? "positive" : "negative"}">${trade.pnl >= 0 ? "+" : ""}${safeNumber(trade.pnl).toFixed(2)} USDT</strong>
+      </div>
+    `).join("")
+    : '<div class="empty">Закрытых виртуальных сделок пока нет.</div>';
+
+  setText("paperClosedCount", String(state.paperClosed.length));
+}
+
+function calculateRisk() {
+  const symbol = $("riskSymbol")?.value;
+  const balance = safeNumber($("riskBalance")?.value);
+  const riskPercent = safeNumber($("riskPercent")?.value);
+  const entry = safeNumber($("riskEntry")?.value) || getPrice(symbol);
+  const stop = safeNumber($("riskStop")?.value);
+
+  if (balance <= 0 || riskPercent <= 0 || riskPercent > 10 ||
+      entry <= 0 || stop <= 0 || entry === stop) {
+    setHtml("riskResult", '<div class="empty">Введи баланс, риск, цену входа и отличающийся от входа стоп.</div>');
+    return;
+  }
+
+  const riskAmount = balance * riskPercent / 100;
+  const distance = Math.abs(entry - stop);
+  const positionSize = riskAmount / (distance / entry);
+  const units = positionSize / entry;
+
   setHtml("riskResult", `
-    <div class="mini-metric">
-      <span>Плановый риск</span>
-      <strong class="negative">$${fmtPrice(riskAmount)}</strong>
-    </div>
-    <div class="mini-metric">
-      <span>Размер позиции</span>
-      <strong>${quantity.toFixed(6)}</strong>
-    </div>
-    <div class="mini-metric">
-      <span>Номинал позиции</span>
-      <strong>$${fmtCompact(notional)}</strong>
-    </div>
-    <div class="mini-metric">
-      <span>Направление по уровням</span>
-      <strong>${riskDirection}</strong>
-    </div>
-    <div class="mini-metric">
-      <span>Расстояние до стопа</span>
-      <strong>$${fmtPrice(distance)}</strong>
-    </div>
-    <div class="mini-metric">
-      <span>Risk / Reward</span>
-      <strong>${rewardRisk === null ? "—" : "1 : " + rewardRisk.toFixed(2)}</strong>
+    <div class="card">
+      <div class="stat-label">Расчёт риска</div>
+      <div class="stat-value">$${fmtPrice(positionSize)}</div>
+      <div class="stat-foot">Ориентировочный номинал позиции</div>
+      <div class="divider"></div>
+      <div class="list-row"><span>Риск до стопа</span><strong>$${fmtPrice(riskAmount)}</strong></div>
+      <div class="list-row" style="margin-top:8px"><span>Количество актива</span><strong>${units.toFixed(6)}</strong></div>
+      <div class="list-row" style="margin-top:8px"><span>Расстояние до стопа</span><strong>${(distance / entry * 100).toFixed(2)}%</strong></div>
     </div>
   `);
 }
 
 function populateRiskFromSignal() {
-  const symbol = $("riskSymbol")?.value || "ETHUSDT";
-  const signal = state.signals[symbol];
+  const symbol = $("riskSymbol")?.value;
+  const signal = state.signals[symbol] || signalFor(symbol);
 
-  if (!signal || signal.direction === "WAIT" || signal.entry <= 0) {
-    toast("Для этого актива пока нет подтверждённого сценария.");
-    return;
+  if (signal.entry > 0) $("riskEntry").value = signal.entry;
+  if (signal.stop > 0 && signal.stop !== signal.entry) {
+    $("riskStop").value = signal.stop;
   }
-
-  $("riskEntry").value = signal.entry.toFixed(8);
-  $("riskStop").value = signal.stop.toFixed(8);
-  $("riskTarget").value = signal.target.toFixed(8);
 
   calculateRisk();
-  toast("Уровни сценария подставлены. Проверь их перед использованием.");
-}
-
-function renderScenario() {
-  const candidates = ["ETHUSDT", "SOLUSDT"]
-    .map(symbol => state.signals[symbol])
-    .filter(signal => signal && signal.direction !== "WAIT");
-
-  if (!candidates.length) {
-    const empty = `
-      <div class="empty">
-        Сейчас нет сценария с достаточным техническим подтверждением.
-        Дождись обновления данных.
-      </div>
-    `;
-    setHtml("homeScenario", empty);
-    setHtml("bestScenario", empty);
-    return;
-  }
-
-  candidates.sort((a, b) => Math.abs(b.score) - Math.abs(a.score));
-  const best = candidates[0];
-  const directionClass = best.direction === "LONG" ? "positive" : "negative";
-
-  const html = `
-    <div class="scenario-card">
-      <div class="asset-top">
-        <div>
-          <div class="stat-label">Сравнение сценариев</div>
-          <div class="scenario-title" style="margin-top:8px">
-            ${coinShort(best.symbol)} / USDT
-          </div>
-        </div>
-        <span class="signal-tag ${best.direction.toLowerCase()}">${best.direction}</span>
-      </div>
-      <div class="scenario-probs">
-        <div class="scenario-prob">
-          <span>Направление</span>
-          <strong class="${directionClass}">${best.direction}</strong>
-        </div>
-        <div class="scenario-prob">
-          <span>RSI</span>
-          <strong>${best.rsi.toFixed(1)}</strong>
-        </div>
-        <div class="scenario-prob">
-          <span>Оценка модели</span>
-          <strong>${best.score > 0 ? "+" : ""}${best.score}</strong>
-        </div>
-      </div>
-      <p class="scenario-sub">${escapeHtml(best.note)}</p>
-      <p class="scenario-sub">
-        Это ранжирование по простым техническим условиям, а не
-        вероятность успеха и не обещание доходности.
-      </p>
-    </div>
-  `;
-
-  setHtml("homeScenario", html);
-  setHtml("bestScenario", html);
-}
-
-function renderAll() {
-  setText("homeEthPrice", getPrice("ETHUSDT") ? "$" + fmtPrice(getPrice("ETHUSDT")) : "—");
-  setText("homeSolPrice", getPrice("SOLUSDT") ? "$" + fmtPrice(getPrice("SOLUSDT")) : "—");
-
-  setText("homeEthChange", fmtPercent(getChange("ETHUSDT")) + " за 24ч");
-  setText("homeSolChange", fmtPercent(getChange("SOLUSDT")) + " за 24ч");
-
-  setText("lastUpdated", state.lastUpdated ? fmtTime(state.lastUpdated) : "—");
-
-  setHtml("homeAssets", ["ETHUSDT", "SOLUSDT"].map(symbol =>
-    renderAssetCard(symbol, true)
-  ).join(""));
-
-  setHtml("marketAssets", ["ETHUSDT", "SOLUSDT"].map(symbol =>
-    renderAssetCard(symbol)
-  ).join(""));
-
-  setHtml("signalAssets", ["ETHUSDT", "SOLUSDT"].map(symbol =>
-    renderSignalCard(symbol)
-  ).join(""));
-
-  setHtml("homeSignals", ["ETHUSDT", "SOLUSDT"].map(symbol => {
-    const signal = state.signals[symbol] || signalFor(symbol);
-    const cls = signal.direction === "LONG"
-      ? "positive"
-      : signal.direction === "SHORT" ? "negative" : "neutral";
-
-    return `
-      <div class="list-row">
-        <div>
-          <div class="list-row-title">${coinShort(symbol)} / USDT</div>
-          <div class="list-row-sub">Цена: $${fmtPrice(getPrice(symbol))}</div>
-        </div>
-        <strong class="${cls}">${signal.direction}</strong>
-      </div>
-    `;
-  }).join(""));
-
-  renderScenario();
-  renderMultiTimeframe();
-  renderOrderBooks();
-  renderEvents();
-  renderHistory();
-  renderProfile();
-}
-
-function renderHistory() {
-  const container = $("historyList");
-  if (!container) return;
-
-  if (!state.history.length) {
-    container.innerHTML = '<div class="empty">История пока пуста. Создай снимок анализа через экспорт.</div>';
-    return;
-  }
-
-  container.innerHTML = state.history.slice().reverse().map(item => `
-    <div class="list-row">
-      <div>
-        <div class="list-row-title">${escapeHtml(item.label || "Снимок рынка")}</div>
-        <div class="list-row-sub">${escapeHtml(item.time || "")}</div>
-        <div class="list-row-sub">${escapeHtml(item.summary || "")}</div>
-      </div>
-      <button class="btn small" data-delete-history="${escapeHtml(item.id)}">Удалить</button>
-    </div>
-  `).join("");
 }
 
 function renderProfile() {
-  setText("profileName", state.profile.name || "Monaco Member");
-  setText("profilePlan", state.profile.plan || "FREE");
-  setText("profileSnapshots", String(state.history.length));
-  setText("profileId", state.telegram?.initDataUnsafe?.user?.id
-    ? "Telegram ID: " + state.telegram.initDataUnsafe.user.id
-    : "Локальный профиль");
+  setText("profileName", state.profile.name || "Monaco Trader");
+  setText("displayName", state.profile.name || "Monaco Trader");
 
   const avatar = $("profileAvatar");
-  if (avatar) avatar.textContent = (state.profile.name || "M").slice(0, 1).toUpperCase();
-
-  if ($("displayName") && !$("displayName").value) {
-    $("displayName").value = state.profile.name || "";
+  if (avatar) {
+    avatar.textContent = (state.profile.name || "M").trim().charAt(0).toUpperCase();
   }
 }
- function exportSnapshot() {
-  const snapshot = {
-    application: "CRYPTO MONACO",
-    exportedAt: new Date().toISOString(),
-    prices: state.prices,
-    tickers: state.tickers,
-    signals: state.signals,
-    multiTimeframe: state.multiTimeframe,
-    orderBook: state.orderBook,
-    events: state.events
-  };
 
-  const blob = new Blob(
-    [JSON.stringify(snapshot, null, 2)],
-    {type: "application/json"}
-  );
+function renderAll() {
+  setHtml("assetOverview", ["BTCUSDT", "ETHUSDT", "SOLUSDT"].map(symbol => renderAssetCard(symbol, true)).join(""));
+  setHtml("marketAssets", ["BTCUSDT", "ETHUSDT", "SOLUSDT"].map(symbol => renderAssetCard(symbol, false)).join(""));
 
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = "crypto-monaco-" + Date.now() + ".json";
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  URL.revokeObjectURL(url);
-
-  const summary = {
-    id: String(Date.now()),
-    label: "Снимок рынка",
-    time: new Date().toLocaleString("ru-RU"),
-    summary: `ETH: $${fmtPrice(getPrice("ETHUSDT"))}; SOL: $${fmtPrice(getPrice("SOLUSDT"))}`
-  };
-
-  state.history.push(summary);
-  saveHistory();
+  renderMultiTimeframe();
+  renderOrderBooks();
+  renderEvents();
+  renderScenario();
+  renderSignalsPage();
   renderHistory();
+  renderPriceAlerts();
+  renderPaperTrades();
   renderProfile();
-  toast("Снимок экспортирован.");
-}
-
-function exportHistory() {
-  const blob = new Blob(
-    [JSON.stringify(state.history, null, 2)],
-    {type: "application/json"}
-  );
-
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = "crypto-monaco-history.json";
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  URL.revokeObjectURL(url);
-
-  toast("История экспортирована.");
 }
 
 function navigate(page) {
@@ -1099,113 +1212,144 @@ function navigate(page) {
   });
 
   if (page === "market") {
-    renderMultiTimeframe();
-    renderOrderBooks();
-    renderEvents();
+    renderPriceAlerts();
   }
 
   window.scrollTo({top: 0, behavior: "smooth"});
 }
 
+function exportSnapshot() {
+  const snapshot = {
+    exportedAt: new Date().toISOString(),
+    prices: state.prices,
+    tickers: state.tickers,
+    signals: state.signals,
+    multiTimeframe: state.multiTimeframe,
+    orderBook: state.orderBook,
+    events: state.events
+  };
+
+  downloadJSON(snapshot, "crypto-monaco-snapshot.json");
+  toast("Снимок рынка экспортирован.");
+}
+
+function exportHistory() {
+  downloadJSON(state.history, "crypto-monaco-history.json");
+  toast("История экспортирована.");
+}
+
+function downloadJSON(data, filename) {
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type: "application/json"});
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
 function startAutoRefresh() {
-  if (state.timer) {
-    clearInterval(state.timer);
-    state.timer = null;
-  }
+  if (state.timer) clearInterval(state.timer);
 
-  if ($("autoRefreshToggle")?.checked === false) return;
-
-  state.interval = safeNumber(
-    $("refreshInterval")?.value,
-    CONFIG.defaultInterval
-  );
-
+  state.interval = CONFIG.defaultInterval;
   state.timer = setInterval(() => {
-    if (!document.hidden && !state.loading) {
-      loadMarket();
-    }
+    if (!document.hidden && !state.loading) loadMarket();
   }, state.interval);
 }
 
 function bindEvents() {
   document.querySelectorAll(".navbtn").forEach(button => {
-    button.addEventListener("click", () => {
-      navigate(button.dataset.page);
-    });
+    button.addEventListener("click", () => navigate(button.dataset.page));
   });
 
   $("refreshBtn")?.addEventListener("click", loadMarket);
   $("marketRefreshBtn")?.addEventListener("click", loadMarket);
-
   $("exportBtn")?.addEventListener("click", exportSnapshot);
   $("marketExportBtn")?.addEventListener("click", exportSnapshot);
   $("historyExportBtn")?.addEventListener("click", exportHistory);
 
   $("calcRiskBtn")?.addEventListener("click", calculateRisk);
   $("useSignalBtn")?.addEventListener("click", populateRiskFromSignal);
+  $("addAlertBtn")?.addEventListener("click", addPriceAlert);
+  $("enableNotificationsBtn")?.addEventListener("click", enableBrowserNotifications);
+  $("openPaperTradeBtn")?.addEventListener("click", openPaperTrade);
+
+  $("priceAlertsList")?.addEventListener("click", event => {
+    const button = event.target.closest("[data-remove-alert]");
+    if (!button) return;
+
+    state.priceAlerts = state.priceAlerts.filter(alert => alert.id !== button.dataset.removeAlert);
+    saveTradingTools();
+    renderPriceAlerts();
+    toast("Уведомление удалено.");
+  });
+
+  $("openPaperTrades")?.addEventListener("click", event => {
+    const button = event.target.closest("[data-close-paper]");
+    if (button) closePaperTrade(button.dataset.closePaper);
+  });
 
   $("riskSymbol")?.addEventListener("change", () => {
-    const symbol = $("riskSymbol").value;
-    const price = getPrice(symbol);
-    if (price > 0 && !$("riskEntry").value) {
-      $("riskEntry").value = price.toFixed(8);
-    }
+    const price = getPrice($("riskSymbol").value);
+    if (price > 0) $("riskEntry").value = price;
+  });
+
+  $("generateSignalsBtn")?.addEventListener("click", () => {
+    ["BTCUSDT", "ETHUSDT", "SOLUSDT"].forEach(symbol => {
+      state.signals[symbol] = signalFor(symbol);
+    });
+    renderSignalsPage();
+    renderScenario();
+    toast("Технический анализ обновлён.");
   });
 
   $("clearHistoryBtn")?.addEventListener("click", () => {
-    if (!confirm("Удалить всю историю снимков?")) return;
+    if (!confirm("Удалить историю анализа?")) return;
     state.history = [];
     saveHistory();
     renderHistory();
-    renderProfile();
     toast("История очищена.");
   });
 
-  $("historyList")?.addEventListener("click", event => {
-    const button = event.target.closest("[data-delete-history]");
-    if (!button) return;
-
-    const id = button.dataset.deleteHistory;
-    state.history = state.history.filter(item => item.id !== id);
-    saveHistory();
-    renderHistory();
-    renderProfile();
-    toast("Запись удалена.");
+  $("clearPaperBtn")?.addEventListener("click", () => {
+    if (!confirm("Удалить все виртуальные сделки?")) return;
+    state.paperOpen = [];
+    state.paperClosed = [];
+    saveTradingTools();
+    renderPaperTrades();
+    toast("Журнал paper trading очищен.");
   });
 
   $("saveProfileBtn")?.addEventListener("click", () => {
-    const name = $("displayName").value.trim();
-    state.profile.name = name || "Monaco Member";
+    state.profile.name = $("displayName").value.trim() || "Monaco Trader";
     saveProfileData();
     renderProfile();
     toast("Профиль сохранён.");
   });
 
-  $("autoRefreshToggle")?.addEventListener("change", startAutoRefresh);
-  $("refreshInterval")?.addEventListener("change", startAutoRefresh);
-
   $("clearLocalBtn")?.addEventListener("click", () => {
-    if (!confirm("Удалить локальную историю и настройки профиля?")) return;
+    if (!confirm("Сбросить локальные данные приложения?")) return;
 
     state.history = [];
-    state.profile = {name: "Monaco Member", plan: "FREE"};
+    state.priceAlerts = [];
+    state.paperOpen = [];
+    state.paperClosed = [];
+    state.profile = {name: "Monaco Trader", plan: "FREE"};
 
     saveHistory();
+    saveTradingTools();
     saveProfileData();
-    renderHistory();
-    renderProfile();
-
+    renderAll();
     toast("Локальные данные сброшены.");
   });
 
   document.querySelectorAll("[data-plan]").forEach(button => {
     button.addEventListener("click", () => {
-      const plan = button.dataset.plan;
-
-      toast(
-        "Выбран тариф " + plan +
-        ". Оплата пока не подключена."
-      );
+      toast(`Выбран тариф ${button.dataset.plan}. Оплата пока не подключена.`);
     });
   });
 }
@@ -1218,9 +1362,8 @@ function initializeTelegram() {
       state.telegram.expand();
 
       const user = state.telegram.initDataUnsafe?.user;
-
       if (user) {
-        if (user.first_name && state.profile.name === "Monaco Member") {
+        if (user.first_name && state.profile.name === "Monaco Trader") {
           state.profile.name = user.first_name;
           saveProfileData();
         }
@@ -1229,7 +1372,7 @@ function initializeTelegram() {
       }
     }
   } catch (error) {
-    console.warn("Telegram WebApp initialization failed", error);
+    console.warn("Telegram initialization failed", error);
   }
 }
 
@@ -1238,30 +1381,157 @@ async function initializeApp() {
   bindEvents();
   renderAll();
   startAutoRefresh();
-
   await loadMarket();
-
-  if (!$("riskEntry").value && getPrice("ETHUSDT") > 0) {
-    $("riskEntry").value = getPrice("ETHUSDT").toFixed(8);
-  }
 }
 
 document.addEventListener("visibilitychange", () => {
-  if (!document.hidden && !state.loading) {
-    loadMarket();
-  }
-});
-
-window.addEventListener("online", () => {
-  toast("Соединение восстановлено.");
-  loadMarket();
-});
-
-window.addEventListener("offline", () => {
-  setConnection(false, "Нет интернета");
+  if (!document.hidden && !state.loading) loadMarket();
 });
 
 initializeApp();
+function renderIndicators() {
+  const out = document.getElementById("indicatorsOutput");
+  if (!out) return;
+
+  out.innerHTML = `
+    <p>Market data: loading...</p>
+    <p>EMA 20 / 50 / 200, RSI, MACD, Bollinger Bands and ATR</p>
+  `;
+
+  fetch("https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1h&limit=200")
+    .then(r => r.json())
+    .then(rows => {
+      const closes = rows.map(row => Number(row[4]));
+      const ema = (period) => {
+        const k = 2 / (period + 1);
+        let value = closes[0];
+        for (let i = 1; i < closes.length; i++) {
+          value = closes[i] * k + value * (1 - k);
+        }
+        return value;
+      };
+
+      const gains = [];
+      const losses = [];
+      for (let i = 1; i < closes.length; i++) {
+        const change = closes[i] - closes[i - 1];
+        gains.push(Math.max(change, 0));
+        losses.push(Math.max(-change, 0));
+      }
+
+      const avgGain = gains.slice(-14).reduce((a, b) => a + b, 0) / 14;
+      const avgLoss = losses.slice(-14).reduce((a, b) => a + b, 0) / 14;
+      const rsi = avgLoss === 0 ? 100 : 100 - 100 / (1 + avgGain / avgLoss);
+
+      out.innerHTML = `
+        <p>BTC/USDT — 1h</p>
+        <p>EMA 20: ${ema(20).toFixed(2)}</p>
+        <p>EMA 50: ${ema(50).toFixed(2)}</p>
+        <p>EMA 200: ${ema(200).toFixed(2)}</p>
+        <p>RSI (14): ${rsi.toFixed(2)}</p>
+      `;
+    })
+    .catch(() => {
+      out.innerHTML = "<p>Could not load market data. Try again.</p>";
+    });
+}
+
+function runBacktest() {
+  const out = document.getElementById("backtestOutput");
+  const symbol = document.getElementById("backtestSymbol").value;
+  const balance = Number(document.getElementById("backtestBalance").value);
+
+  if (!Number.isFinite(balance) || balance <= 0) {
+    out.textContent = "Enter a valid starting balance.";
+    return;
+  }
+
+  out.textContent = "Loading historical candles...";
+
+  fetch(`https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=1h&limit=500`)
+    .then(r => r.json())
+    .then(rows => {
+      const prices = rows.map(row => Number(row[4]));
+      let cash = balance;
+      let asset = 0;
+      let trades = 0;
+
+      for (let i = 21; i < prices.length; i++) {
+        const fast = prices.slice(i - 9, i + 1).reduce((a, b) => a + b, 0) / 10;
+        const slow = prices.slice(i - 20, i + 1).reduce((a, b) => a + b, 0) / 21;
+
+        if (asset === 0 && fast > slow) {
+          asset = cash / prices[i];
+          cash = 0;
+          trades++;
+        } else if (asset > 0 && fast < slow) {
+          cash = asset * prices[i];
+          asset = 0;
+          trades++;
+        }
+      }
+
+      const finalValue = cash + asset * prices[prices.length - 1];
+      const pnl = finalValue - balance;
+      const pct = pnl / balance * 100;
+
+      out.innerHTML = `
+        <p>Pair: ${symbol}</p>
+        <p>Initial balance: €${balance.toFixed(2)}</p>
+        <p>Final value: €${finalValue.toFixed(2)}</p>
+        <p>P/L: €${pnl.toFixed(2)} (${pct.toFixed(2)}%)</p>
+        <p>Completed actions: ${trades}</p>
+        <p>Test: 500 hourly candles, simple moving-average crossover, fees excluded.</p>
+      `;
+    })
+    .catch(() => {
+      out.textContent = "Backtest failed to load market data.";
+    });
+}
+
+function exportBacktest() {
+  const out = document.getElementById("backtestOutput");
+  const text = out ? out.innerText : "";
+
+  if (!text.trim()) {
+    alert("Run the backtest first.");
+    return;
+  }
+
+  const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "crypto-monaco-backtest.txt";
+  a.click();
+  URL.revokeObjectURL(url);
+}
+</script><div id="page-tools" class="page">
+  <div class="card">
+    <h2>ADVANCED TOOLS</h2>
+    <p>Technical indicators and strategy backtesting</p>
+    <button id="refreshIndicatorsBtn">Refresh Indicators</button>
+    <div id="indicatorsOutput"></div>
+  </div>
+  <div class="card">
+    <h2>STRATEGY BACKTESTER</h2>
+    <label>Trading pair</label>
+    <select id="backtestSymbol">
+      <option value="BTCUSDT">BTC / USDT</option>
+      <option value="ETHUSDT">ETH / USDT</option>
+      <option value="SOLUSDT">SOL / USDT</option>
+    </select>
+    <label>Starting balance (€)</label>
+    <input id="backtestBalance" type="number" value="1000" min="1">
+    <button id="runBacktestBtn">Run Backtest</button>
+    <button id="exportBacktestBtn">Export Results</button>
+    <div id="backtestOutput"></div>
+  </div>
+</div>
+<script>
+document.getElementById("refreshIndicatorsBtn")?.addEventListener("click", renderIndicators);
+document.getElementById("runBacktestBtn")?.addEventListener("click", runBacktest);
+document.getElementById("exportBacktestBtn")?.addEventListener("click", exportBacktest);
 </script>
 </body>
 </html>
